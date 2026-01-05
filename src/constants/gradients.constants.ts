@@ -1,0 +1,1 @@
+export const blueGradientClass = "from-blue-600 to-blue-400"
