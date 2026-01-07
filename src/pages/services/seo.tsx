@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBrandGoogle, IconChartLine, IconFileText, IconLink, IconReportSearch, IconSearch, IconSeo, IconStar, IconTargetArrow, IconTrendingUp } from '@tabler/icons-react';
+import { IconChartLine, IconFileText, IconLink, IconReportSearch, IconSearch, IconSeo, IconStar, IconTargetArrow } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const SEOPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?q=80&w=2074&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="SEO Services" 
+            <img
+                src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?q=80&w=2074&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="SEO Services"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "tools",
-        icon: <IconBrandGoogle className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "tools",
+    //     icon: <IconBrandGoogle className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const SEOPage = () => {
     return (
         <div>
             <MainSection text='SEO' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our SEO Process' eyebrow={processEyebrow} />

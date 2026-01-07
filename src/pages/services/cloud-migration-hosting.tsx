@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconCloud, IconCloudComputing, IconDatabaseExport, IconLock, IconRocket, IconServer, IconShieldCheck, IconStar, IconTrendingUp, IconWorldUpload } from '@tabler/icons-react';
+import {   IconCloudComputing, IconDatabaseExport,  IconRocket, IconServer, IconShieldCheck, IconStar, IconTrendingUp, IconWorldUpload } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -64,10 +63,10 @@ const CloudMigrationHostingPage = () => {
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "platforms",
-        icon: <IconCloud className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "platforms",
+    //     icon: <IconCloud className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",

@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBrandFigma, IconBrush, IconFileTypography, IconLayout, IconPalette, IconPhoto, IconPresentation, IconPrinter, IconStar, IconTemplate } from '@tabler/icons-react';
+import {   IconBrush,  IconLayout, IconPalette, IconPhoto, IconPresentation, IconPrinter, IconStar, IconTemplate } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -64,10 +63,10 @@ const GraphicDesignPage = () => {
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "tools",
-        icon: <IconBrandFigma className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "tools",
+    //     icon: <IconBrandFigma className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",

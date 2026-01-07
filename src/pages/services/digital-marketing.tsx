@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBrandGoogle, IconChartBar, IconMail, IconSpeakerphone, IconSeo, IconSocial, IconStar, IconTarget, IconTrendingUp } from '@tabler/icons-react';
+import { IconBrandGoogle, IconChartBar, IconMail, IconSpeakerphone, IconSeo, IconSocial, IconStar, IconTrendingUp } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const DigitalMarketingPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?q=80&w=2074&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Digital Marketing Strategy" 
+            <img
+                src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?q=80&w=2074&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="Digital Marketing Strategy"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "channels",
-        icon: <IconTarget className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "channels",
+    //     icon: <IconTarget className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const DigitalMarketingPage = () => {
     return (
         <div>
             <MainSection text='Digital Marketing' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our Digital Marketing Process' eyebrow={processEyebrow} />

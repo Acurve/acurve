@@ -56,7 +56,6 @@
 
 // export default DigitalPresenceAnimation
 
-import React from 'react'
 
 const DigitalPresenceAnimation = () => {
   return (

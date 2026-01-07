@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import type { AnimationHandle } from '@/types/animation'
 import type { ClassNameProps } from '@/types/global'
 import { motion, useAnimationControls } from 'motion/react'
-import { forwardRef, useEffect, useImperativeHandle } from 'react'
+import { forwardRef,  useImperativeHandle } from 'react'
 
 
 const Speaker = forwardRef<AnimationHandle, ClassNameProps>(({ className = "" }, ref) => {

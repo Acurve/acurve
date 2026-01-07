@@ -297,13 +297,11 @@
 //     );
 // }
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactFormSchema, type ContactFormValues } from '@/schemas/contact.schema';
 import { Mail, Phone, MapPin, Send, Sparkles, ChevronDown } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import { blueGradientClass } from '@/constants/gradients.constants';
-import { cn } from '@/lib/utils';
 import { NavLink } from 'react-router';
 
 // Country codes data

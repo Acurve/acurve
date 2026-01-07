@@ -1,4 +1,4 @@
-import { CheckCircle, Clock, Eye, Grid, Handshake, Layers, RefreshCw, Target, Zap } from "lucide-react";
+import { CheckCircle, Eye, Handshake, Layers,  Target, Zap } from "lucide-react";
 
 export interface Benefit {
     id: string,

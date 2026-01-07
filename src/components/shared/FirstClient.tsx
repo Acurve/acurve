@@ -44,7 +44,7 @@ import mountain from "./mountain.png"
 import Section from '../layout/Section'
 import { NavLink } from 'react-router'
 import { Button } from '../ui/button'
-import { ArrowRight, Sparkles, TrendingUp, Award, Rocket } from 'lucide-react'
+import { ArrowRight, TrendingUp, Award, Rocket } from 'lucide-react'
 import { motion } from 'motion/react'
 
 const FirstClient = ({ variant = "black" }: { variant?: "white" | "black" }) => {
@@ -53,26 +53,25 @@ const FirstClient = ({ variant = "black" }: { variant?: "white" | "black" }) => 
     // Dynamic color classes based on variant
     const textPrimary = isBlack ? "text-black" : "text-white"
     const textSecondary = isBlack ? "text-black/60" : "text-white/60"
-    const textTertiary = isBlack ? "text-black/70" : "text-white/70"
+    // const textTertiary = isBlack ? "text-black/70" : "text-white/70"
     const textMuted = isBlack ? "text-black/50" : "text-white/50"
     const textSubtle = isBlack ? "text-black/40" : "text-white/40"
 
     const bgLight = isBlack ? "bg-black/[0.02]" : "bg-white/[0.02]"
-    const bgMedium = isBlack ? "bg-black/[0.05]" : "bg-white/[0.05]"
+    // const bgMedium = isBlack ? "bg-black/[0.05]" : "bg-white/[0.05]"
     const bgHover = isBlack ? "hover:bg-black/[0.05]" : "hover:bg-white/[0.05]"
-    const bgCard = isBlack ? "bg-black/5" : "bg-white/5"
+    // const bgCard = isBlack ? "bg-black/5" : "bg-white/5"
     const bgCardHover = isBlack ? "group-hover:bg-black/10" : "group-hover:bg-white/10"
     const bgIcon = isBlack ? "bg-black/5" : "bg-white/5"
-    const bgIconHover = isBlack ? "hover:bg-black/10" : "hover:bg-white/10"
+    // const bgIconHover = isBlack ? "hover:bg-black/10" : "hover:bg-white/10"
 
     const borderLight = isBlack ? "border-black/10" : "border-white/10"
-    const borderMedium = isBlack ? "border-black/20" : "border-white/20"
+    // const borderMedium = isBlack ? "border-black/20" : "border-white/20"
     const borderHover = isBlack ? "hover:border-black/20" : "hover:border-white/20"
-    const borderHoverStrong = isBlack ? "hover:border-black/30" : "hover:border-white/30"
-
-    const iconColor = isBlack ? "text-black/80" : "text-white/80"
-    const dotColor = isBlack ? "bg-black/30" : "bg-white/30"
+    // const borderHoverStrong = isBlack ? "hover:border-black/30" : "hover:border-white/30"r:border-black/30" : "hover:border-white/30" "bg-black/30" : "bg-white/30"
+    const dotColor = isBlack ? "bg-black/50" : "bg-white/50"
     const dotBg = isBlack ? "bg-black/50" : "bg-white/50"
+    const iconColor = isBlack ? "bg-black/50" : "bg-white/50"
 
     const strokeColor = isBlack ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.3)"
 

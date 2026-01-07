@@ -1,4 +1,4 @@
-import CallToAction from "@/components/shared/CallToAction"
+
 import FAQs from "./faqs/FAQs"
 import Hero from "./hero/Hero"
 import OurServices from "./services/OurServices"

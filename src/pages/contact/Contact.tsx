@@ -1,6 +1,4 @@
-import React from 'react'
 import ContactPage from './ContactForm'
-import QuickCallCTA from './PreferCall'
 import Container from '@/components/layout/Container'
 
 const Contact = () => {

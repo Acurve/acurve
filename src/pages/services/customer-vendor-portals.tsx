@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBell, IconFileInvoice, IconMessageCircle, IconPackage, IconShoppingCart, IconStar, IconTruck, IconUserCheck, IconUsers } from '@tabler/icons-react';
+import { IconBell, IconFileInvoice, IconMessageCircle, IconPackage, IconShoppingCart, IconStar, IconTruck, IconUserCheck } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const CustomerVendorPortalsPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Customer and Vendor Portal Dashboard" 
+            <img
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="Customer and Vendor Portal Dashboard"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "techstack",
-        icon: <IconUsers className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "techstack",
+    //     icon: <IconUsers className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const CustomerVendorPortalsPage = () => {
     return (
         <div>
             <MainSection text='Customer & Vendor Portals' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our Portal Development Process' eyebrow={processEyebrow} />

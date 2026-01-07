@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconCalendar, IconChartBar, IconHeart, IconMessage, IconPhoto, IconSocial, IconStar, IconUsers } from '@tabler/icons-react';
+import { IconBrandInstagram, IconCalendar, IconChartBar, IconHeart, IconMessage, IconPhoto, IconStar, IconUsers } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const SocialMediaManagementPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Social Media Management" 
+            <img
+                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="Social Media Management"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "platforms",
-        icon: <IconSocial className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "platforms",
+    //     icon: <IconSocial className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const SocialMediaManagementPage = () => {
     return (
         <div>
             <MainSection text='Social Media Management' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our Social Media Management Process' eyebrow={processEyebrow} />

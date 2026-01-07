@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight,IconUpload, IconBell, IconBug, IconCloud, IconRefresh, IconServer, IconShieldCheck, IconStar, IconTools, IconTrendingUp, IconCloudUpload } from '@tabler/icons-react';
+import { IconBell, IconBug, IconServer, IconShieldCheck, IconStar, IconTools, IconTrendingUp, IconCloudUpload } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const MaintenanceSupportPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Maintenance and Technical Support" 
+            <img
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="Maintenance and Technical Support"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "platforms",
-        icon: <IconCloud className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "platforms",
+    //     icon: <IconCloud className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const MaintenanceSupportPage = () => {
     return (
         <div>
             <MainSection text='Maintenace & Technical Support' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our Maintenance & Support Process' eyebrow={processEyebrow} />

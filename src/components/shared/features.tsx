@@ -1,6 +1,6 @@
-"use client"
 import { motion } from 'motion/react'
-import React, {type ReactNode } from 'react'
+import  {type ReactNode } from 'react'
+
 type FeaturesProps = {
     featuresList: {
         icon: ReactNode,

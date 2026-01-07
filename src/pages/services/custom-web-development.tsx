@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { IconArrowRight, IconCode, IconCpu, IconDeviceIpadBolt, IconDeviceMobile, IconShieldCheck, IconStar, IconWorld } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -59,10 +58,10 @@ const customwebDevelopmentPage = () => {
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "techstack",
-        icon: <IconCpu className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "techstack",
+    //     icon: <IconCpu className="text-purple-700" />
+    // }
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
         icon: <IconCpu className="text-blue-400" />

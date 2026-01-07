@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import type { AnimationHandle } from '@/types/animation'
 import type { ClassNameProps } from '@/types/global'
 import { motion, useAnimationControls } from 'motion/react'
-import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
+import  { forwardRef, useImperativeHandle } from 'react'
 
 const ArtBoard = forwardRef<AnimationHandle, ClassNameProps>(({ className = "" }, ref) => {
 

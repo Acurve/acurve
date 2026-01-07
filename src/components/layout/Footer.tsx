@@ -1,6 +1,5 @@
-import React from 'react';
 import { NavLink } from 'react-router';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import Acurve from '../svgs/Acurve';
 
 export default function Footer() {

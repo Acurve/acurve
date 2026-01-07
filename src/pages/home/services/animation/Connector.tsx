@@ -296,7 +296,7 @@
 
 
 import { motion } from 'motion/react';
-import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { getElementCoords, getOrthogonalPath, Side } from '@/utils/beam';
 import { cn } from '@/lib/utils';
 
@@ -410,11 +410,11 @@ export const Connector = ({
                 animate={{
                     strokeDashoffset: reverse ? 0 : 0,
                 }}
-                // transition={transition}
+            // transition={transition}
             />
-            
+
             {/* Optional: Add a glow effect by duplicating the path with blur */}
-             <motion.path
+            <motion.path
                 d={pathD}
                 stroke={color}
                 strokeWidth={strokeWidth * 2}
@@ -425,7 +425,7 @@ export const Connector = ({
                 animate={{
                     strokeDashoffset: reverse ? 0 : 0,
                 }}
-                // transition={transition}
+            // transition={transition}
             />
         </svg>
     );

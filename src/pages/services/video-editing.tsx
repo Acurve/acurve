@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBrandYoutube, IconDeviceTv, IconMovie, IconMusic, IconPlayerPlay, IconScissors, IconSparkles, IconStar, IconVideo, IconWand } from '@tabler/icons-react';
+import { IconDeviceTv, IconMovie, IconMusic, IconPlayerPlay, IconScissors, IconSparkles, IconStar, IconWand } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const VideoEditingPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Video Editing Services" 
+            <img
+                src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="Video Editing Services"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "software",
-        icon: <IconVideo className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "software",
+    //     icon: <IconVideo className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const VideoEditingPage = () => {
     return (
         <div>
             <MainSection text='Video Editing' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our Video Editing Process' eyebrow={processEyebrow} />

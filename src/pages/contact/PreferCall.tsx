@@ -1,16 +1,13 @@
-import React from 'react';
 import { Phone, Calendar } from 'lucide-react';
 import { NavLink } from 'react-router';
 import { cn } from '@/lib/utils';
 import { blueGradientClass } from '@/constants/gradients.constants';
 
 interface QuickCallCTAProps {
-    calendlyLink?: string;
     className?: string;
 }
 
 export default function QuickCallCTA({
-    calendlyLink = "https://calendly.com/your-link",
     className = ""
 }: QuickCallCTAProps) {
     return (

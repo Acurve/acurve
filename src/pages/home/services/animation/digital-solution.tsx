@@ -1,6 +1,6 @@
-import React, { forwardRef, useEffect, useRef } from 'react'
+import  { forwardRef, useRef } from 'react'
 import { Connector } from './Connector'
-import { cn, sleep } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import type { ChildrenProps, ClassNameProps } from '@/types/global'
 
 

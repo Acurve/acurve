@@ -1,10 +1,9 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconBuildingStore, IconChartBar, IconCloud, IconDatabaseCog, IconLock, IconShieldCheck, IconStar, IconUsers, IconUserShield } from '@tabler/icons-react';
+import { IconChartBar, IconCloud, IconDatabaseCog, IconLock, IconStar, IconUsers, IconUserShield } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import StaggeredLayout from '@/components/shared/staggered-layout';
 import MainSection from '@/components/shared/main-section';
 import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
@@ -56,18 +55,18 @@ const B2BPortals = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="B2B Portal Dashboard" 
+            <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="B2B Portal Dashboard"
             />
         </div>
     )
 
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "techstack",
-        icon: <IconBuildingStore className="text-purple-700" />
-    }
+    // const eyebrow: SectionHeaderProps["eyebrow"] = {
+    //     text: "techstack",
+    //     icon: <IconBuildingStore className="text-purple-700" />
+    // }
 
     const processEyebrow: SectionHeaderProps["eyebrow"] = {
         text: "process",
@@ -82,7 +81,7 @@ const B2BPortals = () => {
     return (
         <div>
             <MainSection text='B2B Portals' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our B2B Portal Development Process' eyebrow={processEyebrow} />

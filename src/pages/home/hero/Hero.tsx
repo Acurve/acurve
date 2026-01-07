@@ -6,10 +6,9 @@ import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 import { AuroraText } from "@/components/ui/aurora-text"
 import { Button } from "@/components/ui/button"
-import { IconCalendar, IconRocket } from "@tabler/icons-react"
+import {  IconRocket } from "@tabler/icons-react"
 import { NavLink } from "react-router"
 import { blueGradientClass } from "@/constants/gradients.constants"
-import { FloatingItems } from "./FloatingItems"
 
 const Hero = () => {
     return (
