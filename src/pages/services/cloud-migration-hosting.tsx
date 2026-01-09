@@ -1,7 +1,7 @@
 import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
 
 import { Button } from '@/components/ui/button';
-import {   IconCloudComputing, IconDatabaseExport,  IconRocket, IconServer, IconShieldCheck, IconStar, IconTrendingUp, IconWorldUpload } from '@tabler/icons-react';
+import { IconCloudComputing, IconDatabaseExport, IconRocket, IconServer, IconShieldCheck, IconStar, IconTrendingUp, IconWorldUpload } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
@@ -9,6 +9,7 @@ import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
 import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
+import { useEffect } from 'react';
 
 const CloudMigrationHostingPage = () => {
     const processStepsList = [
@@ -55,10 +56,10 @@ const CloudMigrationHostingPage = () => {
         <div className='relative w-full flex'>
             <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
             <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Cloud Migration and Hosting" 
+            <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+                className='object-cover rounded-br-3xl'
+                alt="Cloud Migration and Hosting"
             />
         </div>
     )
@@ -77,11 +78,13 @@ const CloudMigrationHostingPage = () => {
         text: "features",
         icon: <IconStar className="text-yellow-400" />
     }
-
+    useEffect(() => {
+        document.title = "Cloud Migration & Hosting | Acurve"
+    }, [])
     return (
         <div>
             <MainSection text='Cloud Migration & Hosting' leftSection={left} rightSection={right} />
-            
+
             <Section className='overflow-visible' id='process'>
                 <Container>
                     <SectionHeader heading='Our Cloud Migration Process' eyebrow={processEyebrow} />

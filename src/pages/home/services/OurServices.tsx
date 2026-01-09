@@ -2,12 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { HelpingHand } from 'lucide-react';
 import Section from "@/components/layout/Section"
 
-
-// import DigitalPresenceAnimation from './animation/digital-presence';
-// import DigitalSolutionAnimation from './animation/digital-solution';
-// import CloudInfrastructureAnimation from './animation/cloud-infrastructure';
-// import CreativityAnimation from './animation/creativity';
-// import AutomationIntegrationAnimation from './animation/automation-integration';
 import { servicesList } from '@/constants/serviceList';
 import Container from '@/components/layout/Container';
 import { NavLink } from 'react-router';
@@ -33,13 +27,7 @@ const OurServices: React.FC = () => {
         | "content-creativity-animation"
         | "content-automation-integration-animation";
 
-    // const content: Record<ContentKey, React.ReactNode> = {
-    //     "content-cloud-infrastruture-animation": <CloudInfrastructureAnimation />,
-    //     "content-digital-solutions-animation": <DigitalSolutionAnimation />,
-    //     "content-digital-presence-animation": <DigitalPresenceAnimation />,
-    //     "content-creativity-animation": <CreativityAnimation />,
-    //     "content-automation-integration-animation": <AutomationIntegrationAnimation />,
-    // }
+    
     const content: Record<ContentKey, string> = {
         "content-cloud-infrastruture-animation": cloud,
         "content-digital-solutions-animation": web,
@@ -78,143 +66,112 @@ const OurServices: React.FC = () => {
 
     }
     return (
-        <Section className="bg-foreground-lighter/90 text-background overflow-visible">
-            <Container>
+
+            <Section className="bg-foreground-lighter/90 text-background overflow-visible">
+                <Container>
 
 
-                <SectionHeader heading='Our Services' subHeading='Smart digital experiences built for the next generation of businesses.' align="center" eyebrow={eyebrow} subHeadingClassName='text-background/40' />
+                    <SectionHeader heading='Our Services' subHeading='Smart digital experiences built for the next generation of businesses.' align="center" eyebrow={eyebrow} subHeadingClassName='text-background/40' />
 
-                {/* Sticky Scroll Section */}
-                <div className="flex  border">
-                    {/* Left Side - Scrolling Content */}
-                    <div className="w-full lg:w-1/2 ">
-                        {servicesList.map((service, index) => (
-                            <div
-                                key={index}
-                                ref={el => { sectionRefs.current[index] = el; }}
-                                className="min-h-[calc(100vh-64px)] flex flex-col justify-center items-center"
-                            >
-                                {/* <div className="max-w-lg bg-neutral-200 p-12 rounded-2xl">
-                                    <div>
-
-                                        <h3 className="text-4xl lg:text-5xl font-bold mb-6">
-                                            {service.name}
-                                        </h3>
-                                        <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                                            {service.description}
-                                        </p>
+                    {/* Sticky Scroll Section */}
+                    <div className="flex  border">
+                        {/* Left Side - Scrolling Content */}
+                        <div className="w-full lg:w-1/2 space-y-6 lg:space-y-0">
+                            {servicesList.map((service, index) => (
+                                <div
+                                    key={index}
+                                    ref={el => { sectionRefs.current[index] = el; }}
+                                    className="min-h-[calc(100dvh-64px)] flex flex-col justify-center items-center relative"
+                                >
+                                    <div
+                                        className="absolute lg:hidden rounded-xl shadow-2xl  w-full h-full">
+                                        <img src={content[service.contentId as ContentKey]} alt="" className='w-full h-full object-cover rounded-xl! -z-1' />
                                     </div>
-                                    <div className='mt-4 flex flex-col gap-2'>
-                                        <p className='font-semibold text-lg'>Sevices</p>
-                                        <div className='space-y-2'>
+                                    <div className="absolute lg:hidden rounded-xl bg-background/90 left-0 right-0 top-0 bottom-0" />
+                                    <div className="group relative max-w-lg">
 
-                                            {service.subServices.map((subService, index) => (
-                                                <NavLink
-                                                    to={`/${subService.href}`}
-                                                    key={index}
-                                                    className='flex items-center gap-2 text-background/70 font-semibold hover:text-background'>
-                                                    <subService.icon />
-                                                    <p>{subService.name}</p>
-                                                </NavLink>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div> */}
-                                <div className="group relative max-w-lg">
-                                    {/* Gradient glow effect */}
-                                    {/* <div className="absolute -inset-0.5 bg-linear-to-r from-blue-800 via-blue-600 to-blue-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div> */}
+                                        {/* Main card */}
+                                        <div className="relative bg-gradient-to-br- from-neutral-900 via-neutral-900 to-neutral-800 p-10 rounded-2xl border- border-neutral-700/50- shadow-2xl- overflow-hidden">
 
-                                    {/* Main card */}
-                                    <div className="relative bg-gradient-to-br- from-neutral-900 via-neutral-900 to-neutral-800 p-10 rounded-2xl border- border-neutral-700/50- shadow-2xl- overflow-hidden">
-                                        {/* Subtle animated background pattern */}
-                                        {/* <div className="absolute inset-0 opacity-5">
-                                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-                                        </div> */}
 
-                                        {/* Shine effect on hover */}
-                                        {/* <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                                        </div> */}
+                                            <div className="relative z-10">
+                                                <div className="mb-8">
+                                                    <h3 className="text-4xl lg:text-5xl font-bold mb-6 lg:text-background text-foreground-lighter  leading-tight">
+                                                        {service.name}
+                                                    </h3>
+                                                    <p className="text-lg lg:text-xl  lg:text-background/70 text-foreground-lighter/80 leading-relaxed font-light">
+                                                        {service.description}
+                                                    </p>
+                                                </div>
 
-                                        {/* Content */}
-                                        <div className="relative z-10">
-                                            <div className="mb-8">
-                                                <h3 className="text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-white via-white to-neutral-300 bg-clip-text text-transparent- leading-tight">
-                                                    {service.name}
-                                                </h3>
-                                                <p className="text-lg lg:text-xl text-neutral-300- text-background/70 leading-relaxed font-light">
-                                                    {service.description}
-                                                </p>
-                                            </div>
+                                                {/* Divider */}
+                                                <div className="w-16 h-0.5 bg-linear-to-r from-blue-600 to-blue-400 mb-6"></div>
 
-                                            {/* Divider */}
-                                            <div className="w-16 h-0.5 bg-linear-to-r from-blue-600 to-blue-400 mb-6"></div>
-
-                                            <div className="space-y-4">
-                                                <p className="font-semibold text-neutral-200- text-background/90 tracking-wide uppercase text-sm">
-                                                    Services
-                                                </p>
-                                                <div className="space-y-1.5">
-                                                    {service.subServices.map((subService, index) => (
-                                                        <NavLink
-                                                            to={`/service/${subService.href}`}
-                                                            key={index}
-                                                            className="group/link flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-400- font-medium hover:text-white- hover:bg-white/5- transition-all duration-300 border- border-transparent- hover:border-neutral-700/50- text-background/80 hover:bg-background/10"
-                                                        >
-                                                            <div className="text-blue-400 group-hover/link:text-blue-300 transition-colors duration-300">
-                                                                <subService.icon />
-                                                            </div>
-                                                            <p className="text-base">{subService.name}</p>
-                                                            <svg
-                                                                className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
+                                                <div className="space-y-4">
+                                                    <p className="font-semibold text-foreground/90 lg:text-background/90 tracking-wide uppercase text-sm">
+                                                        Services
+                                                    </p>
+                                                    <div className="space-y-1.5">
+                                                        {service.subServices.map((subService, index) => (
+                                                            <NavLink
+                                                                to={`/service/${subService.href}`}
+                                                                key={index}
+                                                                className="group/link flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-400- font-medium  hover:bg-white/5- transition-all duration-300  lg:text-background/80 lg:hover:bg-background/10 text-foreground/80 hover:bg-foreground/10"
                                                             >
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                            </svg>
-                                                        </NavLink>
-                                                    ))}
+                                                                <div className="text-blue-400 group-hover/link:text-blue-300 transition-colors duration-300">
+                                                                    <subService.icon />
+                                                                </div>
+                                                                <p className="text-base">{subService.name}</p>
+                                                                <svg
+                                                                    className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    viewBox="0 0 24 24"
+                                                                >
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                                </svg>
+                                                            </NavLink>
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            {/* Corner accent */}
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-blue-500/10 to-transparent rounded-bl-full"></div>
                                         </div>
+                                    </div>
 
-                                        {/* Corner accent */}
-                                        <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-blue-500/10 to-transparent rounded-bl-full"></div>
+                                    <div className='lg:hidden w-full'>
+                                        {/* <img src={content[service.contentId as ContentKey]} alt="" /> */}
+
                                     </div>
                                 </div>
+                            ))}
+                        </div>
 
-                                <div className='lg:hidden h-108 w-full'>
-                                    <img src={content[service.contentId as ContentKey]} alt="" />
-
+                        {/* Right Side - Sticky Content */}
+                        <div className="hidden lg:block w-1/2 ">
+                            <div className="sticky top-16 min-h-[calc(100vh-64px)] flex items-center justify-center ">
+                                <div className="relative w-full h-[80dvh]">
+                                    {servicesList.map((service, index) => (
+                                        <div
+                                            key={index}
+                                            className="absolute shadow-2xl rounded-xl inset-0 transition-all duration-700 ease-out "
+                                            style={{
+                                                opacity: activeIndex === index ? 1 : 0,
+                                                transform: activeIndex === index ? 'scale(1)' : 'scale(0.9)',
+                                                zIndex: activeIndex === index ? 10 : 5,
+                                            }}
+                                        >
+                                            <img src={content[service.contentId as ContentKey]} alt="" className='rounded-xl h-full object-cover w-full' />
+                                        </div>
+                                    ))}
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Right Side - Sticky Content */}
-                    <div className="hidden lg:block w-1/2 ">
-                        <div className="sticky top-16 min-h-[calc(100vh-64px)] flex items-center justify-center ">
-                            <div className="relative w-full h-full aspect-square">
-                                {servicesList.map((service, index) => (
-                                    <div
-                                        key={index}
-                                        className="absolute inset-0 transition-all duration-700 ease-out "
-                                        style={{
-                                            opacity: activeIndex === index ? 1 : 0,
-                                            transform: activeIndex === index ? 'scale(1)' : 'scale(0.9)',
-                                            zIndex: activeIndex === index ? 10 : 5,
-                                        }}
-                                    >
-                                        <img src={content[service.contentId as ContentKey]} alt="" className='rounded-xl h-full object-cover w-full' />
-                                    </div>
-                                ))}
                             </div>
                         </div>
                     </div>
-                </div>
-            </Container>
-        </Section>
+                </Container>
+            </Section>
     );
 };
 

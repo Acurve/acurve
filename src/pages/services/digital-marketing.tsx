@@ -9,6 +9,7 @@ import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
 import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
+import { useEffect } from 'react';
 
 const DigitalMarketingPage = () => {
     const processStepsList = [
@@ -77,7 +78,9 @@ const DigitalMarketingPage = () => {
         text: "features",
         icon: <IconStar className="text-yellow-400" />
     }
-
+    useEffect(() => {
+        document.title = "Digital Marketing | Acurve"
+    }, [])
     return (
         <div>
             <MainSection text='Digital Marketing' leftSection={left} rightSection={right} />

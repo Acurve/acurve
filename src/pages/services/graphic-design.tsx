@@ -9,6 +9,7 @@ import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
 import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
+import { useEffect } from 'react';
 
 const GraphicDesignPage = () => {
     const processStepsList = [
@@ -77,6 +78,10 @@ const GraphicDesignPage = () => {
         text: "features",
         icon: <IconStar className="text-yellow-400" />
     }
+
+    useEffect(() => {
+            document.title = "Graphic Design | Acurve"
+        }, [])
 
     return (
         <div>

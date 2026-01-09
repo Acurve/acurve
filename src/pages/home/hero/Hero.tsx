@@ -9,26 +9,26 @@ import { Button } from "@/components/ui/button"
 import {  IconRocket } from "@tabler/icons-react"
 import { NavLink } from "react-router"
 import { blueGradientClass } from "@/constants/gradients.constants"
+import Container from "@/components/layout/Container"
 
 const Hero = () => {
     return (
-
         <Section className="relative">
             <FallingParticles side="left" />
             <FallingParticles side="right" />
           <DotPattern
-                glow={true}
+                // glow={true}
                 className={cn(
                     "mask-[radial-gradient(300px_circle_at_center,white,transparent)] -z-1"
                 )}
             /> 
             {/* <FloatingItems /> */}
-            <div className=" w-full h-screen justify-center items-center flex">
-                <div className="max-w-3xl space-y-10 h-max">
+            <Container className=" w-full h-screen justify-center items-center flex">
+                <div className=" space-y-10 h-max">
 
                     <div className="space-y-4">
 
-                        <motion.h1 className={cn(" text-2xl md:text-3xl lg:text-5xl font-semibold  mx-auto text-center  relative bg-clip-text text-transparent bg-linear-to-b  from-neutral-400 dark:via-white to-white flex flex-col gap-4")}
+                        <motion.h1 className={cn(" text-3xl min-[480px]:text-4xl md:text-5xl lg:text-7xl font-semibold  mx-auto text-center  relative bg-clip-text text-transparent bg-linear-to-b  from-neutral-400 dark:via-white to-white flex flex-col gap-4")}
 
                         >
                             Digital solutions that move
@@ -37,7 +37,7 @@ const Hero = () => {
                                 Brand <AuroraText speed={2}>forwards</AuroraText>
                             </span>
                         </motion.h1>
-                        <motion.p className="text-foreground/60">
+                        <motion.p className="text-foreground/60 text-center lg:max-w-[80%] mx-auto">
                             We design and implement web solutions, automation systems, and integrations that streamline operations, boost performance, and accelerate business growth for manufacturing and professional service companies.
                         </motion.p>
                     </div>
@@ -57,7 +57,7 @@ const Hero = () => {
                         </NavLink>
                     </div>
                 </div>
-            </div>
+            </Container>
 
         </Section>
     )

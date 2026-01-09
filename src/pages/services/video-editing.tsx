@@ -9,6 +9,7 @@ import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
 import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
+import { useEffect } from 'react';
 
 const VideoEditingPage = () => {
     const processStepsList = [
@@ -78,6 +79,9 @@ const VideoEditingPage = () => {
         icon: <IconStar className="text-yellow-400" />
     }
 
+    useEffect(() => {
+            document.title = "Video Editing | Acurve"
+        }, [])
     return (
         <div>
             <MainSection text='Video Editing' leftSection={left} rightSection={right} />

@@ -5,6 +5,7 @@ import Home from "@/pages/home/Home";
 import Meeting from "@/pages/meeting/Meeting";
 import APISystemIntegrationPage from "@/pages/services/api-dev-system-integration";
 import B2BPortals from "@/pages/services/b2b-portals";
+import BrandingPage from "@/pages/services/branding";
 import CloudMigrationHostingPage from "@/pages/services/cloud-migration-hosting";
 import CRMERPIntegrationPage from "@/pages/services/crm-erp-integration";
 import customwebDevelopmentPage from "@/pages/services/custom-web-development";
@@ -64,7 +65,7 @@ export const router = createBrowserRouter([
                 Component: CRMERPIntegrationPage,
             },
             {
-                path: "digitl-marketing",
+                path: "digital-marketing",
                 Component: DigitalMarketingPage,
             },
             {
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
             {
                 path: "social-media-management",
                 Component: SocialMediaManagementPage,
+            },
+            {
+                path: "branding",
+                Component: BrandingPage,
             },
             {
                 path: "video-editing",

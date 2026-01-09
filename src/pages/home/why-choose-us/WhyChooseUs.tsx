@@ -1,5 +1,4 @@
 
-// components/BenefitsSection.tsx
 import React from 'react';
 import { Flame } from 'lucide-react';
 import SectionHeader from '@/components/shared/SectionHeader';
@@ -19,31 +18,32 @@ const WhyChooseus: React.FC = () => {
         icon: <Flame className='text-destructive' />
     }
     return (
-        <Section className='relative'>
-            <div className="w-full absolute inset-0 h-screen">
+     
+            <Section className='relative'>
+                <div className="w-full absolute inset-0 h-screen">
 
-                <SparklesCore
-                    id="tsparticlesfullpage"
-                    background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={100}
-                    className="w-full h-full"
-                    particleColor="#FFFFFF"
-                />
-            </div>
-            <Container className='space-y-6'>
-
-
-                <SectionHeader heading='Why choose us?' eyebrow={eyebrow}></SectionHeader>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3  gap-4">
-                    {benefitsList.map((benefit, index) => (
-                        <BenefitCard key={benefit.id} benefit={benefit} index={index} />
-                    ))}
+                    <SparklesCore
+                        id="tsparticlesfullpage"
+                        background="transparent"
+                        minSize={0.6}
+                        maxSize={1.4}
+                        particleDensity={100}
+                        className="w-full h-full"
+                        particleColor="#FFFFFF"
+                    />
                 </div>
-            </Container>
-        </Section>
+                <Container className='space-y-6'>
+
+
+                    <SectionHeader heading='Why choose us?' eyebrow={eyebrow}></SectionHeader>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3  gap-4">
+                        {benefitsList.map((benefit, index) => (
+                            <BenefitCard key={benefit.id} benefit={benefit} index={index} />
+                        ))}
+                    </div>
+                </Container>
+            </Section>
     );
 };
 

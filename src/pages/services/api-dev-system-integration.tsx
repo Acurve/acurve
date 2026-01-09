@@ -9,6 +9,7 @@ import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
 import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
+import { useEffect } from 'react';
 
 const APISystemIntegrationPage = () => {
     const processStepsList = [
@@ -77,10 +78,13 @@ const APISystemIntegrationPage = () => {
         text: "features",
         icon: <IconStar className="text-yellow-400" />
     }
+    useEffect(() => {
+        document.title = "Api Development & System Integration | Acurve"
+    }, [])
 
     return (
         <div>
-            <MainSection text='Api Developmen & System Integration' leftSection={left} rightSection={right}  />
+            <MainSection text='Api Developmen & System Integration' leftSection={left} rightSection={right} />
 
             <Section className='overflow-visible' id='process'>
                 <Container>

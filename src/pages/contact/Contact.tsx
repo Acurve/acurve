@@ -1,14 +1,17 @@
+import { useEffect } from 'react'
 import ContactPage from './ContactForm'
-import Container from '@/components/layout/Container'
+import { NavbarObserver } from '@/components/layout/NavbarObserver'
 
 const Contact = () => {
+    useEffect(() => {
+        document.title = "Contact | Acurve"
+    }, [])
     return (
         <div>
-            <Container>
-                <></>
-                {/* <QuickCallCTA className='mt-24' /> */}
-            </Container>
-            <ContactPage />
+            <NavbarObserver theme='dark'>
+
+                <ContactPage />
+            </NavbarObserver>
         </div>
     )
 }

@@ -74,7 +74,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     <motion.div
       ref={ref}
       // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("fixed inset-x-0 top-0 z-40 w-full", className)}
+      className={cn("fixed inset-x-0 top-0 z-40 w-screen", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -109,7 +109,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: windowWidth > BREAKPOINTS.md ? "768px" : windowWidth > BREAKPOINTS.sm ? "calc(100vw - 64px)" : "calc(100vw - 48px)",
       }}
       className={cn(
-        "relative z-60 mx-auto  w-full max-w-7xl flex-row items-center justify-between self-start rounded-full   ",
+        "relative z-60 mx-auto  w-full  flex-row items-center justify-between self-start rounded-full   ",
         className,
       )}
     >

@@ -9,6 +9,7 @@ import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
 import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
+import { useEffect } from 'react';
 
 const CustomerVendorPortalsPage = () => {
     const processStepsList = [
@@ -78,6 +79,9 @@ const CustomerVendorPortalsPage = () => {
         icon: <IconStar className="text-yellow-400" />
     }
 
+    useEffect(() => {
+            document.title = "Customer & Vendor Portals | Acurve"
+        }, [])
     return (
         <div>
             <MainSection text='Customer & Vendor Portals' leftSection={left} rightSection={right} />

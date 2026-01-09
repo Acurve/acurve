@@ -137,8 +137,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className='w-full p-6'>
-          <h1 className='lg:text-[256px] md:text-7xl text-5xl text-center font-bold bg-linear-to-b from-neutral-600 text-transparent bg-clip-text to-white'>ACURVE</h1>
+        <div className='w-full sm:p-6'>
+          <h1 className='lg:text-[224px] md:text-[180px] sm:text-8xl text-7xl text-center font-bold bg-linear-to-b from-neutral-600 text-transparent bg-clip-text to-white'>ACURVE</h1>
         </div>
 
         {/* Bottom Bar */}
