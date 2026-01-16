@@ -446,7 +446,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="relative md:max-w-3xl lg:max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-32">
-                    <div className="grid lg:grid-cols-2 gap-16 items-start">
+                    <div className="flex flex-col lg:flex-row  gap-16 items-start">
                         {/* Left Column - Info */}
                         <Animate type='fade-up' duration={2}>
 
@@ -488,7 +488,7 @@ export default function ContactPage() {
                                 {/* Contact Info Cards */}
                                 <div className="space-y-4">
                                     <NavLink
-                                        to="mailto:hello@acurve.com"
+                                        to="mailto:contact@acurve.com"
                                         className="group flex items-center gap-4 p-6 bg-white/2 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300"
                                     >
                                         <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
@@ -528,13 +528,13 @@ export default function ContactPage() {
                         </Animate>
 
                         {/* Right Column - Form */}
-                        <Animate type='fade-up' duration={2}>
-                            <div className="relative">
+                        <Animate type='fade-up' className='w-full' duration={2}>
+                            <div className="relative flex">
                                 <div className="absolute -inset-px bg-white/10 rounded-3xl opacity-50 blur-sm" />
 
                                 <form
                                     onSubmit={handleSubmit(onSubmit)}
-                                    className="relative bg-white/2 backdrop-blur-xl border border-white/10 rounded-3xl p-8 lg:p-10 space-y-6"
+                                    className="relative bg-white/2 backdrop-blur-xl border border-white/10 rounded-3xl w-full p-8 lg:p-10 space-y-6"
                                 >
                                     {/* Name */}
                                     <div>
@@ -554,18 +554,18 @@ export default function ContactPage() {
                                     </div>
 
                                     {/* Phone & Email */}
-                                    <div className="grid md:grid-cols-1 gap-4">
+                                    <div className="flex flex-col gap-4">
                                         <div>
                                             <label htmlFor="phone" className="block text-white font-semibold mb-2 text-sm">
                                                 Phone <span className="text-red-400">*</span>
                                             </label>
-                                            <div className="flex gap-2">
+                                            <div className="flex flex-col min-[420px]:flex-row gap-2">
                                                 {/* Country Code Dropdown */}
                                                 <div className="relative">
                                                     <button
                                                         type="button"
                                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                                        className="h-full px-3 bg-white/5 border border-white/10 rounded-xl text-white flex items-center gap-2 hover:bg-white/10 transition-all min-w-25"
+                                                        className="h-full px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-white flex items-center gap-2 hover:bg-white/10 transition-all min-w-25"
                                                     >
                                                         <span className="text-xl">{selectedCountry.flag}</span>
                                                         <span className="text-sm">{selectedCountry.code}</span>
