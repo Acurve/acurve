@@ -1,25 +1,129 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import { IconBadge, IconBrush, IconColorSwatch, IconEye, IconPalette, IconPencil, IconStar, IconVectorTriangle } from '@tabler/icons-react';
+import { IconBadge,  IconColorSwatch, IconEye, IconPalette, IconPencil,  IconVectorTriangle } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import { Timeline } from '@/components/ui/timeline';
+import Right from './RightSection';
+import Left from './LeftSection';
+import PhaseContent from '@/components/shared/PhaseContent';
+
+
+import phase1 from "@/assets/logo-design/phase1.webp"
+import phase2 from "@/assets/logo-design/phase2.webp"
+import phase3 from "@/assets/logo-design/phase3.webp"
+import phase4 from "@/assets/logo-design/phase4.webp"
+import phase5 from "@/assets/logo-design/phase5.webp"
+import phase6 from "@/assets/logo-design/phase6.webp"
+import { techStackList } from '@/constants/techstack/logo-design';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
 
 const LogoDesignPage = () => {
     const processStepsList = [
-        { number: 1, title: "Brand Discovery", description: "Deep dive into your business values, target market, and competitive landscape. We uncover what makes you unique and how to express it visually." },
-        { number: 2, title: "Concept Sketching", description: "Hand-sketch multiple logo concepts exploring different symbolic and typographic directions. Raw ideas that capture your brand essence." },
-        { number: 3, title: "Digital Design", description: "Refine top concepts into polished digital designs. We explore color variations, typography options, and different visual treatments." },
-        { number: 4, title: "Presentation & Feedback", description: "Present 3-5 strong logo concepts with rationale behind each design. Gather your feedback to identify the winning direction." },
-        { number: 5, title: "Refinement & Finalization", description: "Perfect every detail of your chosen logo—spacing, proportions, colors. Create variations for different use cases and backgrounds." },
-        { number: 6, title: "Delivery & Guidelines", description: "Deliver vector files, color variations, and usage guidelines. Your logo ready for business cards, websites, signage, and more." },
-    ];
+    {
+        title: "Brand Discovery",
+        content: (
+            <PhaseContent
+                text="Deep dive into your business values, target market, and competitive landscape. We uncover what makes you unique and how to express it visually."
+                imageSrc={phase1}
+                list={[
+                    "Brand values & vision alignment",
+                    "Target audience analysis",
+                    "Competitor logo research",
+                    "Brand personality definition",
+                    "Design goals & expectations",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Concept Sketching",
+        content: (
+            <PhaseContent
+                text="Hand-sketch multiple logo concepts exploring different symbolic and typographic directions. Raw ideas that capture your brand essence."
+                imageSrc={phase2}
+                list={[
+                    "Symbol & icon exploration",
+                    "Typography-based concepts",
+                    "Multiple rough sketch options",
+                    "Abstract & literal approaches",
+                    "Concept shortlisting",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Digital Design",
+        content: (
+            <PhaseContent
+                text="Refine top concepts into polished digital designs. We explore color variations, typography options, and different visual treatments."
+                imageSrc={phase3}
+                list={[
+                    "Vector-based logo creation",
+                    "Font & typography refinement",
+                    "Color palette exploration",
+                    "Monochrome & full-color versions",
+                    "Scalability & clarity checks",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Presentation & Feedback",
+        content: (
+            <PhaseContent
+                text="Present 3–5 strong logo concepts with rationale behind each design. Gather your feedback to identify the winning direction."
+                imageSrc={phase4}
+                list={[
+                    "Concept presentation with reasoning",
+                    "Real-world logo mockups",
+                    "Strengths & use-case explanation",
+                    "Structured feedback collection",
+                    "Direction finalization",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Refinement & Finalization",
+        content: (
+            <PhaseContent
+                text="Perfect every detail of your chosen logo—spacing, proportions, colors. Create variations for different use cases and backgrounds."
+                imageSrc={phase5}
+                list={[
+                    "Spacing & proportion tuning",
+                    "Color & contrast optimization",
+                    "Light & dark background versions",
+                    "Icon-only & text-only variants",
+                    "Final quality assurance",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Delivery & Guidelines",
+        content: (
+            <PhaseContent
+                text="Deliver vector files, color variations, and usage guidelines. Your logo ready for business cards, websites, signage, and more."
+                imageSrc={phase6}
+                list={[
+                    "Vector & raster file formats",
+                    "Color & typography specifications",
+                    "Clear space & sizing rules",
+                    "Do’s and don’ts usage guide",
+                    "Assets ready for all platforms",
+                ]}
+            />
+        )
+    },
+];
+
 
     const features = [
         { icon: <IconVectorTriangle />, title: "Multiple Concepts", description: "3-5 unique logo concepts to choose from, each crafted with purpose and meaning." },
@@ -31,82 +135,48 @@ const LogoDesignPage = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?q=80&w=2071&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Your logo is your first impression. Make it unforgettable.
-                </h3>
-                <p className='text-foreground/70'>
-                    A great logo is timeless, memorable, and tells your brand story at a glance. We craft custom logos that stand out in crowded markets, resonate with your audience, and grow with your business for years to come.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+
+        <Left
+            heading='Your logo is your first impression. Make it unforgettable.'
+            subHeading='A great logo is timeless, memorable, and tells your brand story at a glance. We craft custom logos that stand out in crowded markets, resonate with your audience, and grow with your business for years to come.'
+        />
+
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img
-                src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?q=80&w=2071&auto=format&fit=crop"
-                className='object-cover rounded-br-3xl'
-                alt="Logo Design Services"
-            />
-        </div>
+        <Right icon={<icons.creativity.logoDesign.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "tools",
-    //     icon: <IconBrandAdobe className="text-purple-700" />
-    // }
 
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconBrush className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
 
     useEffect(() => {
-            document.title = "Logo Design | Acurve"
-        }, [])
+        document.title = "Logo Design | Acurve"
+    }, [])
+
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
     return (
         <div>
-            <MainSection text='Logo Design' leftSection={left} rightSection={right} />
+            <MainSection text='Logo Design' leftSection={left} rightSection={right} icon={<icons.creativity.logoDesign.icon />} />
 
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our Logo Design Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=2070&auto=format&fit=crop"
-                        imageAlt="Logo design process"
+                    <SectionHeader heading='Our Logo Design Process' />
+                    <Timeline
+                        data={processStepsList}
                     />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='Design Software We Use' eyebrow={eyebrow} />
+                    <SectionHeader heading='Design Software We Use'  />
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal}/>
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in Logo Design?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in Logo Design?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>

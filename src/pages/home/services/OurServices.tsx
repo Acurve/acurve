@@ -1,19 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { HelpingHand } from 'lucide-react';
+import React, { useState, useEffect, useRef, type ReactNode } from 'react';
 import Section from "@/components/layout/Section"
 
 import { servicesList } from '@/constants/serviceList';
 import Container from '@/components/layout/Container';
 import { NavLink } from 'react-router';
 import SectionHeader from '@/components/shared/SectionHeader';
-import type { SectionHeaderProps } from "@/components/shared/SectionHeader"
 
-
-import crm from "@/assets/crm.jpg"
-import cloud from "@/assets/cloudInfra.avif"
-import graphic from "@/assets/graphicDesign.avif"
-import social from "@/assets/socialMediamanagement.avif"
-import web from "@/assets/webDev.avif"
+import DigitalSolutionAnimation from './animation/digital-solution';
+import { IconPointFilled } from '@tabler/icons-react';
+import { motion } from 'motion/react';
+import Animate from '@/components/animations/Animate';
+import CreativityAnimation from './animation/creativity';
+import CloudInfrastructureAnimation from './animation/cloud-infrastructure';
 
 
 const OurServices: React.FC = () => {
@@ -27,15 +25,14 @@ const OurServices: React.FC = () => {
         | "content-creativity-animation"
         | "content-automation-integration-animation";
 
-    
-    const content: Record<ContentKey, string> = {
-        "content-cloud-infrastruture-animation": cloud,
-        "content-digital-solutions-animation": web,
-        "content-digital-presence-animation": social,
-        "content-creativity-animation": graphic,
-        "content-automation-integration-animation": crm,
-    }
 
+    const content: Record<ContentKey, ReactNode> = {
+        "content-cloud-infrastruture-animation": <CloudInfrastructureAnimation />,
+        "content-digital-solutions-animation": <DigitalSolutionAnimation />,
+        "content-digital-presence-animation": <DigitalSolutionAnimation />,
+        "content-creativity-animation": <CreativityAnimation />,
+        "content-automation-integration-animation": <DigitalSolutionAnimation />,
+    }
 
     useEffect(() => {
         const handleScroll = (): void => {
@@ -59,119 +56,131 @@ const OurServices: React.FC = () => {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-    const eyebrow: SectionHeaderProps["eyebrow"] = {
-        className: "text-background/70",
-        text: "services",
-        icon: <HelpingHand className="text-primary" />
 
-    }
+    const [hoveredSubServiceId, setHoveredSubServiceId] = useState<string | null>(null)
     return (
 
-            <Section className="bg-foreground-lighter/90 text-background overflow-visible">
-                <Container>
+        <Section className="overflow-visible">
+
+            <Container>
 
 
-                    <SectionHeader heading='Our Services' subHeading='Smart digital experiences built for the next generation of businesses.' align="center" eyebrow={eyebrow} subHeadingClassName='text-background/40' />
+                <SectionHeader heading='Our Services' align="center" />
 
-                    {/* Sticky Scroll Section */}
-                    <div className="flex  border">
-                        {/* Left Side - Scrolling Content */}
-                        <div className="w-full lg:w-1/2 space-y-6 lg:space-y-0">
-                            {servicesList.map((service, index) => (
-                                <div
-                                    key={index}
-                                    ref={el => { sectionRefs.current[index] = el; }}
-                                    className="min-h-[calc(100dvh-64px)] flex flex-col justify-center items-center relative"
-                                >
-                                    <div
-                                        className="absolute lg:hidden rounded-xl shadow-2xl  w-full h-full">
-                                        <img src={content[service.contentId as ContentKey]} alt="" className='w-full h-full object-cover rounded-xl! -z-1' />
-                                    </div>
-                                    <div className="absolute lg:hidden rounded-xl bg-background/90 left-0 right-0 top-0 bottom-0" />
-                                    <div className="group relative max-w-lg">
+                {/* Sticky Scroll Section */}
+                <div className="flex">
+                    {/* Left Side - Scrolling Content */}
+                    <div className="w-full lg:w-1/2 space-y-6 lg:space-y-0">
+                        {servicesList.map((service, index) => (
+                            <div
+                                key={index}
+                                ref={el => { sectionRefs.current[index] = el; }}
+                                className="min-h-[calc(100dvh-64px)] flex flex-col justify-center items-center relative"
+                            >
 
-                                        {/* Main card */}
-                                        <div className="relative bg-gradient-to-br- from-neutral-900 via-neutral-900 to-neutral-800 p-10 rounded-2xl border- border-neutral-700/50- shadow-2xl- overflow-hidden">
+                                <div className="group relative max-w-lg">
+
+                                    <div className="relative p-2  overflow-hidden">
 
 
-                                            <div className="relative z-10">
-                                                <div className="mb-8">
-                                                    <h3 className="text-4xl lg:text-5xl font-bold mb-6 lg:text-background text-foreground-lighter  leading-tight">
+                                        <div className="relative z-10">
+                                            <div className="mb-8 space-y-3">
+                                                <Animate type="fade-up" duration={1}>
+
+                                                    <h3 className="text-4xl lg:text-5xl font-bold leading-tight">
                                                         {service.name}
                                                     </h3>
-                                                    <p className="text-lg lg:text-xl  lg:text-background/70 text-foreground-lighter/80 leading-relaxed font-light">
+                                                </Animate>
+                                                <Animate type="fade-up" duration={1}>
+
+                                                    <p className="text-foreground-lighter/60  leading-relaxed font-light">
                                                         {service.description}
                                                     </p>
-                                                </div>
-
-                                                {/* Divider */}
-                                                <div className="w-16 h-0.5 bg-linear-to-r from-blue-600 to-blue-400 mb-6"></div>
-
-                                                <div className="space-y-4">
-                                                    <p className="font-semibold text-foreground/90 lg:text-background/90 tracking-wide uppercase text-sm">
-                                                        Services
-                                                    </p>
-                                                    <div className="space-y-1.5">
-                                                        {service.subServices.map((subService, index) => (
-                                                            <NavLink
-                                                                to={`/service/${subService.href}`}
-                                                                key={index}
-                                                                className="group/link flex items-center gap-3 px-4 py-3 rounded-lg text-neutral-400- font-medium  hover:bg-white/5- transition-all duration-300  lg:text-background/80 lg:hover:bg-background/10 text-foreground/80 hover:bg-foreground/10"
-                                                            >
-                                                                <div className="text-blue-400 group-hover/link:text-blue-300 transition-colors duration-300">
-                                                                    <subService.icon />
-                                                                </div>
-                                                                <p className="text-base">{subService.name}</p>
-                                                                <svg
-                                                                    className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    viewBox="0 0 24 24"
-                                                                >
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                                </svg>
-                                                            </NavLink>
-                                                        ))}
-                                                    </div>
-                                                </div>
+                                                </Animate>
                                             </div>
 
-                                            {/* Corner accent */}
-                                            <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-blue-500/10 to-transparent rounded-bl-full"></div>
-                                        </div>
-                                    </div>
 
-                                    <div className='lg:hidden w-full'>
-                                        {/* <img src={content[service.contentId as ContentKey]} alt="" /> */}
+
+                                            <div className="space-y-1.5" onMouseLeave={() => setHoveredSubServiceId(null)}>
+
+                                                {service.subServices.map((subService, index) => (
+                                                    <Animate type='slide-right' duration={1}>
+
+
+                                                        <NavLink
+                                                            to={`/service/${subService.href}`}
+                                                            key={index}
+                                                            className=" flex items-center gap-3 px-4 py-3 rounded-lg font-medium  hover:text-background transition-all duration-300  text-foreground  group/subservice relative hov"
+                                                            onMouseEnter={() => setHoveredSubServiceId(subService.id)}
+                                                        >
+                                                            {
+                                                                subService.id === hoveredSubServiceId &&
+                                                                <motion.div
+                                                                    layoutId='subservice-hover'
+                                                                    transition={{
+                                                                        type: "spring",
+                                                                        stiffness: 200,
+                                                                        damping: 10
+                                                                    }}
+                                                                    className="absolute w-full h-full inset-0 -z-1 bg-foreground-lighter/70 rounded-full" />}
+                                                            <div className="">
+                                                                <div className='hidden group-hover/subservice:flex'>
+                                                                    <subService.icon />
+                                                                </div>
+                                                                <IconPointFilled size={24} className=' group-hover/subservice:hidden' />
+                                                            </div>
+                                                            <p className="text-base">{subService.name}</p>
+                                                            <svg
+                                                                className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover/subservice:opacity-100 group-hover/subservice:translate-x-0 transition-all duration-300"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                            </svg>
+                                                        </NavLink>
+                                                    </Animate>
+                                                ))}
+                                            </div>
+                                        </div>
+
+
 
                                     </div>
                                 </div>
-                            ))}
-                        </div>
 
-                        {/* Right Side - Sticky Content */}
-                        <div className="hidden lg:block w-1/2 ">
-                            <div className="sticky top-16 min-h-[calc(100vh-64px)] flex items-center justify-center ">
-                                <div className="relative w-full h-[80dvh]">
-                                    {servicesList.map((service, index) => (
-                                        <div
-                                            key={index}
-                                            className="absolute shadow-2xl rounded-xl inset-0 transition-all duration-700 ease-out "
-                                            style={{
-                                                opacity: activeIndex === index ? 1 : 0,
-                                                transform: activeIndex === index ? 'scale(1)' : 'scale(0.9)',
-                                                zIndex: activeIndex === index ? 10 : 5,
-                                            }}
-                                        >
-                                            <img src={content[service.contentId as ContentKey]} alt="" className='rounded-xl h-full object-cover w-full' />
-                                        </div>
-                                    ))}
+
+                                <div className='lg:hidden w-full'>
+
+                                    {content[service.contentId as ContentKey]}
+
                                 </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Right Side - Sticky Content */}
+                    <div className="hidden lg:block w-1/2 ">
+                        <div className="sticky top-22.5   flex items-center justify-center ">
+                            <div className="relative w-full h-[calc(100dvh-90px)]">
+                                {servicesList.map((service, index) => (
+                                    <div
+                                        key={index}
+                                        className="absolute flex justify-center items-center  inset-0 transition-all duration-700 ease-out "
+                                        style={{
+                                            opacity: activeIndex === index ? 1 : 0,
+                                            zIndex: activeIndex === index ? 10 : 5,
+                                        }}
+                                    >
+                                        {content[service.contentId as ContentKey]}
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </Container>
-            </Section>
+                </div>
+            </Container>
+        </Section>
     );
 };
 

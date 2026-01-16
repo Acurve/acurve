@@ -1,4 +1,5 @@
-import { IconActivity, IconAdjustmentsCog, IconAlertCircle, IconApi, IconArtboard, IconAutomation, IconBell, IconBlendMode, IconBrandTabler, IconBrush, IconBuildingCommunity, IconBuildingWarehouse, IconBulb, IconCalendar, IconChartArcs, IconChartBarPopular, IconCloud, IconCloudCheck, IconCloudCode, IconCloudCog, IconCloudUpload, IconCode, IconCompass, IconCreditCard, IconDeviceDesktopAnalytics, IconDeviceIpadBolt, IconDeviceMobile, IconEdit, IconEye, IconFileAnalytics, IconFileDollar, IconFileDownload, IconFileText, IconGitBranch, IconGraph, IconJson, IconLayersIntersect, IconLayout, IconLink,  IconLockAccess, IconMessage, IconMessageUser, IconMoneybagMinus, IconMovie, IconMusic, IconNetwork, IconPackage, IconPalette, IconPresentationAnalytics, IconRefresh, IconRefreshDot, IconScreenShare, IconSearch, IconSettings, IconShare2, IconShieldCheck, IconShoppingCart, IconSparkles, IconSpeakerphone, IconTarget, IconThumbUp, IconTrendingUp, IconTrendingUp2, IconTypography, IconUser, IconUserCheck, IconUsers, IconUserSearch, IconUsersGroup, IconVideo, IconWorldCode } from "@tabler/icons-react";
+import { IconActivity, IconAdjustmentsCog, IconAlertCircle, IconApi, IconArtboard, IconAutomation, IconBell, IconBlendMode, IconBrandTabler, IconBrush, IconBuildingCommunity, IconBuildingWarehouse, IconBulb, IconCalendar, IconChartArcs, IconChartBarPopular, IconCloud, IconCloudCheck, IconCloudCode, IconCloudCog, IconCloudUpload, IconCode, IconCompass, IconCreditCard, IconDeviceDesktopAnalytics, IconDeviceIpadBolt, IconDeviceMobile, IconEdit, IconEye, IconFileAnalytics, IconFileDollar, IconFileDownload, IconFileText, IconGitBranch, IconGraph, IconHelpTriangle, IconJson, IconLayersIntersect, IconLayout, IconLink, IconLockAccess, IconMessage, IconMessageUser, IconMoneybagMinus, IconMovie, IconMusic, IconNetwork, IconPackage, IconPalette, IconPresentationAnalytics, IconRefresh, IconRefreshDot, IconScreenShare, IconSearch, IconServer, IconSettings, IconShare2, IconShieldCheck, IconShoppingCart, IconSparkles, IconSpeakerphone, IconTarget, IconThumbUp, IconTrendingUp, IconTrendingUp2, IconTypography, IconUser, IconUserCheck, IconUsers, IconUserSearch, IconUsersGroup, IconVideo, IconWorldCode } from "@tabler/icons-react";
+
 
 export const icons = {
     digitalSolutions: {
@@ -107,7 +108,8 @@ export const icons = {
             icon: IconCloudUpload,
             cloudAssessment: IconCloud,
             costOptimization: IconMoneybagMinus,
-            secureMigration: IconCloudCheck
+            secureMigration: IconCloudCheck,
+            hosting: IconServer
         },
         maintenanceTechnicalSupport: {
             icon: IconCloudCog,
@@ -116,7 +118,8 @@ export const icons = {
             performanceTuning: IconSettings,
             incidentManagement: IconAlertCircle,
             updateMangement: IconFileDownload,
-            resourceOptimization: IconFileDollar
+            resourceOptimization: IconFileDollar,
+            maintenance: IconHelpTriangle
         }
     }
 }

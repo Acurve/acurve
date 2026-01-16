@@ -1,24 +1,122 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import {  IconChartLine,  IconDatabase, IconLink, IconRefresh, IconReportAnalytics, IconStar, IconTransferIn, IconUsers } from '@tabler/icons-react';
+import { IconChartLine, IconDatabase, IconLink, IconRefresh, IconReportAnalytics, IconUsers } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import Right from './RightSection';
+import Left from './LeftSection';
+import { Timeline } from '@/components/ui/timeline';
+import PhaseContent from '@/components/shared/PhaseContent';
+
+import phase1 from "@/assets/crm-erp-integrate/phase1.webp"
+import phase2 from "@/assets/crm-erp-integrate/phase2.webp"
+import phase3 from "@/assets/crm-erp-integrate/phase3.webp"
+import phase4 from "@/assets/crm-erp-integrate/phase4.webp"
+import phase5 from "@/assets/crm-erp-integrate/phase5.webp"
+import phase6 from "@/assets/crm-erp-integrate/phase6.webp"
+import { techStackList } from '@/constants/techstack/crm-erp-integrate';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
 
 const CRMERPIntegrationPage = () => {
     const processStepsList = [
-        { number: 1, title: "System Discovery", description: "Analyze your existing CRM and ERP systems, data structures, and business processes. Map out integration touchpoints and data dependencies." },
-        { number: 2, title: "Integration Blueprint", description: "Design the data flow architecture between systems. Define field mappings, sync frequency, and conflict resolution strategies." },
-        { number: 3, title: "Custom Connector Development", description: "Build robust middleware or use native APIs to connect your systems. Handle data transformation and validation automatically." },
-        { number: 4, title: "Data Migration & Sync", description: "Initial data migration with validation and deduplication. Set up real-time or scheduled synchronization between platforms." },
-        { number: 5, title: "Testing & Validation", description: "Comprehensive testing of all integration scenarios. Verify data accuracy, handle edge cases, and ensure system stability." },
-        { number: 6, title: "Monitoring & Maintenance", description: "24/7 monitoring with automated error alerts. Ongoing maintenance as your systems evolve and scale." },
+        {
+            title: "System Discovery",
+            content: (
+                <PhaseContent
+                    text="Analyze your existing CRM and ERP systems, data structures, and business processes. Map out integration touchpoints and data dependencies."
+                    imageSrc={phase1}
+                    list={[
+                        "CRM & ERP system audit",
+                        "Data structure & schema analysis",
+                        "Business process mapping",
+                        "Integration touchpoint identification",
+                    ]}
+                />
+            )
+        },
+
+        {
+            title: "Integration Blueprint",
+            content: (
+                <PhaseContent
+                    text="Design the data flow architecture between systems. Define field mappings, sync frequency, and conflict resolution strategies."
+                    imageSrc={phase2}
+                    list={[
+                        "Data flow & architecture design",
+                        "Field mapping & transformation rules",
+                        "Sync strategy & conflict resolution",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Custom Connector Development",
+            content: (
+                <PhaseContent
+                    text="Build robust middleware or use native APIs to connect your systems. Handle data transformation and validation automatically."
+                    imageSrc={phase3}
+                    list={[
+                        "Custom API or middleware development",
+                        "Data transformation & normalization",
+                        "Validation & error handling logic",
+                        "Secure authentication & access control",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Data Migration & Sync",
+            content: (
+                <PhaseContent
+                    text="Initial data migration with validation and deduplication. Set up real-time or scheduled synchronization between platforms."
+                    imageSrc={phase4}
+                    list={[
+                        "Initial data migration",
+                        "Data validation & deduplication",
+                        "Real-time or scheduled synchronization",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Testing & Validation",
+            content: (
+                <PhaseContent
+                    text="Comprehensive testing of all integration scenarios. Verify data accuracy, handle edge cases, and ensure system stability."
+                    imageSrc={phase5}
+                    list={[
+                        "End-to-end integration testing",
+                        "Data accuracy & consistency checks",
+                        "Edge case & failure handling",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Monitoring & Maintenance",
+            content: (
+                <PhaseContent
+                    text="24/7 monitoring with automated error alerts. Ongoing maintenance as your systems evolve and scale."
+                    imageSrc={phase6}
+                    list={[
+                        "Automated monitoring & alerts",
+                        "Issue resolution & support",
+                        "Ongoing optimization & updates",
+                    ]}
+                />
+            )
+        }
+        ,
     ];
 
     const features = [
@@ -31,82 +129,45 @@ const CRMERPIntegrationPage = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Break down data silos. Unite your CRM and ERP into one powerful ecosystem.
-                </h3>
-                <p className='text-foreground/70'>
-                    Stop copying data between systems. We integrate your CRM and ERP platforms—Salesforce, HubSpot, SAP, Oracle, NetSuite—creating seamless data flows that eliminate manual work and give your teams real-time visibility across your entire business.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+        <Left
+            heading='Break down data silos. Unite your CRM and ERP into one powerful ecosystem.'
+            subHeading='Stop copying data between systems. We integrate your CRM and ERP platforms—Salesforce, HubSpot, SAP, Oracle, NetSuite—creating seamless data flows that eliminate manual work and give your teams real-time visibility across your entire business.'
+        />
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="CRM ERP Integration" 
-            />
-        </div>
+        <Right icon={<icons.automationIntegration.crmErpIntegration.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "platforms",
-    //     icon: <IconWorldCode className="text-purple-700" />
-    // }
-
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconTransferIn className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
 
     useEffect(() => {
-            document.title = "CRM & ERP Integration | Acurve"
-        }, [])
+        document.title = "CRM & ERP Integration | Acurve"
+    }, [])
+
+
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
     return (
         <div>
-            <MainSection text='CRM & ERP Integration' leftSection={left} rightSection={right} />
-            
+            <MainSection text='CRM & ERP Integration' leftSection={left} rightSection={right} icon={<icons.automationIntegration.crmErpIntegration.icon />} />
+
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our CRM-ERP Integration Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-                        imageAlt="CRM ERP integration process"
-                    />
+                    <SectionHeader heading='Our CRM-ERP Integration Process' />
+                    <Timeline data={processStepsList} />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='Systems We Integrate' eyebrow={eyebrow} />
+                    <SectionHeader heading='Tools we use in Integration'/>
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal} />
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in CRM-ERP Integration?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in CRM-ERP Integration?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>

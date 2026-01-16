@@ -1,25 +1,128 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import {   IconBrush,  IconLayout, IconPalette, IconPhoto, IconPresentation, IconPrinter, IconStar, IconTemplate } from '@tabler/icons-react';
+import { IconBrush, IconLayout,  IconPhoto, IconPresentation, IconPrinter,  IconTemplate } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import Right from './RightSection';
+import Left from './LeftSection';
+import { Timeline } from '@/components/ui/timeline';
+import PhaseContent from '@/components/shared/PhaseContent';
+
+import phase1 from "@/assets/graphic-design/phase1.webp"
+import phase2 from "@/assets/graphic-design/phase2.webp"
+import phase3 from "@/assets/graphic-design/phase3.webp"
+import phase4 from "@/assets/graphic-design/phase4.webp"
+import phase5 from "@/assets/graphic-design/phase5.webp"
+import phase6 from "@/assets/graphic-design/phase6.webp"
+import { techStackList } from '@/constants/techstack/graphic-design';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
 
 const GraphicDesignPage = () => {
     const processStepsList = [
-        { number: 1, title: "Creative Brief", description: "Understand your brand, target audience, and project goals. We gather inspiration, references, and define the creative direction together." },
-        { number: 2, title: "Concept Development", description: "Create multiple design concepts exploring different visual approaches. Present mood boards, sketches, and initial ideas for your feedback." },
-        { number: 3, title: "Design Refinement", description: "Refine the chosen concept with your input. Perfect colors, typography, layouts, and every visual detail until it's just right." },
-        { number: 4, title: "Revisions & Approval", description: "Two rounds of revisions included to ensure complete satisfaction. We iterate until the design exceeds your expectations." },
-        { number: 5, title: "File Preparation", description: "Prepare all file formats for your needs—print-ready PDFs, web-optimized PNGs, editable source files, and more." },
-        { number: 6, title: "Delivery & Support", description: "Deliver organized files with usage guidelines. Available for future updates, adaptations, and additional design needs." },
-    ];
+    {
+        title: "Creative Brief",
+        content: (
+            <PhaseContent
+                text="Understand your brand, target audience, and project goals. We gather inspiration, references, and define the creative direction together."
+                imageSrc={phase1}
+                list={[
+                    "Brand personality & tone definition",
+                    "Target audience and use-case analysis",
+                    "Design goals & success criteria",
+                    "Visual references & inspiration",
+                    "Timeline and deliverables alignment",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Concept Development",
+        content: (
+            <PhaseContent
+                text="Create multiple design concepts exploring different visual approaches. Present mood boards, sketches, and initial ideas for your feedback."
+                imageSrc={phase2}
+                list={[
+                    "Multiple creative directions",
+                    "Mood boards & style exploration",
+                    "Layout and composition ideas",
+                    "Color and typography options",
+                    "Initial visual mockups",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Design Refinement",
+        content: (
+            <PhaseContent
+                text="Refine the chosen concept with your input. Perfect colors, typography, layouts, and every visual detail until it's just right."
+                imageSrc={phase3}
+                list={[
+                    "Color palette finalization",
+                    "Typography refinement",
+                    "Spacing, alignment & hierarchy",
+                    "Visual consistency checks",
+                    "Detail-level enhancements",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Revisions & Approval",
+        content: (
+            <PhaseContent
+                text="Two rounds of revisions included to ensure complete satisfaction. We iterate until the design exceeds your expectations."
+                imageSrc={phase4}
+                list={[
+                    "Structured feedback review",
+                    "Two revision rounds included",
+                    "Fine-tuning visual details",
+                    "Final design adjustments",
+                    "Client approval & sign-off",
+                ]}
+            />
+        )
+    },
+    {
+        title: "File Preparation",
+        content: (
+            <PhaseContent
+                text="Prepare all file formats for your needs—print-ready PDFs, web-optimized PNGs, editable source files, and more."
+                imageSrc={phase5}
+                list={[
+                    "Print-ready files (PDF, CMYK)",
+                    "Web-optimized assets (PNG, JPG, SVG)",
+                    "Editable source files (Figma / AI / PSD)",
+                    "Multiple sizes & format exports",
+                    "Organized asset structure",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Delivery & Support",
+        content: (
+            <PhaseContent
+                text="Deliver organized files with usage guidelines. Available for future updates, adaptations, and additional design needs."
+                imageSrc={phase6}
+                list={[
+                    "Clean and organized file delivery",
+                    "Usage & export guidelines",
+                    "Brand consistency notes",
+                    "Support for minor tweaks",
+                    "Future design adaptations",
+                ]}
+            />
+        )
+    },
+];
+
 
     const features = [
         { icon: <IconBrush />, title: "Logo & Brand Identity", description: "Memorable logos and complete visual identity systems that make you stand out." },
@@ -31,83 +134,47 @@ const GraphicDesignPage = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Beautiful designs that communicate your message and captivate your audience.
-                </h3>
-                <p className='text-foreground/70'>
-                    Great design is invisible—it just works. We create stunning visual designs that communicate your message clearly, strengthen your brand, and leave lasting impressions. From logos to marketing materials, we make you look exceptional.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+        <Left
+            heading='Beautiful designs that communicate your message and captivate your audience.'
+            subHeading='Great design is invisible—it just works. We create stunning visual designs that communicate your message clearly, strengthen your brand, and leave lasting impressions. From logos to marketing materials, we make you look exceptional.'
+        />
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img 
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop" 
-                className='object-cover rounded-br-3xl' 
-                alt="Graphic Design Services" 
-            />
-        </div>
+        <Right icon={<icons.creativity.graphicDesign.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "tools",
-    //     icon: <IconBrandFigma className="text-purple-700" />
-    // }
 
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconPalette className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
 
     useEffect(() => {
-            document.title = "Graphic Design | Acurve"
-        }, [])
+        document.title = "Graphic Design | Acurve"
+    }, [])
 
+
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
     return (
         <div>
-            <MainSection text='Graphic Design' leftSection={left} rightSection={right} />
-            
+            <MainSection text='Graphic Design' leftSection={left} rightSection={right} icon={<icons.creativity.graphicDesign.icon />} />
+
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our Graphic Design Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2064&auto=format&fit=crop"
-                        imageAlt="Graphic design process"
+                    <SectionHeader heading='Our Graphic Design Process'  />
+                    <Timeline
+                        data={processStepsList}
                     />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='Design Tools We Master' eyebrow={eyebrow} />
+                    <SectionHeader heading='Design Tools We Master' />
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal} />
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in Graphic Design?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in Graphic Design?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import Acurve from '../svgs/Acurve';
+import { TextAnimate } from '../ui/text-animate';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -138,7 +139,12 @@ export default function Footer() {
         </div>
 
         <div className='w-full sm:p-6'>
-          <h1 className='lg:text-[224px] md:text-[180px] sm:text-8xl text-7xl text-center font-bold bg-linear-to-b from-neutral-600 text-transparent bg-clip-text to-white'>ACURVE</h1>
+          <h1 className='lg:text-[224px] flex md:text-[180px] sm:text-8xl text-7xl text-center font-bold '>
+            <TextAnimate animation='slideUp' startOnView={true}  duration={0.7} by='character' className='w-full text-center'>
+
+              ACURVE
+            </TextAnimate>
+          </h1>
         </div>
 
         {/* Bottom Bar */}

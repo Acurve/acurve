@@ -1,25 +1,129 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import { IconBrandInstagram, IconCalendar, IconChartBar, IconHeart, IconMessage, IconPhoto, IconStar, IconUsers } from '@tabler/icons-react';
+import { IconCalendar, IconChartBar, IconHeart, IconMessage, IconPhoto, IconUsers } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import { Timeline } from '@/components/ui/timeline';
+import Right from './RightSection';
+import Left from './LeftSection';
+import PhaseContent from '@/components/shared/PhaseContent';
+
+import phase1 from "@/assets/social-media-management/phase1.webp"
+import phase2 from "@/assets/social-media-management/phase2.webp"
+import phase3 from "@/assets/social-media-management/phase3.webp"
+import phase4 from "@/assets/social-media-management/phase4.webp"
+import phase5 from "@/assets/social-media-management/phase5.webp"
+import phase6 from "@/assets/social-media-management/phase6.webp"
+import { techStackList } from '@/constants/techstack/social-media-management';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
+
 
 const SocialMediaManagementPage = () => {
     const processStepsList = [
-        { number: 1, title: "Social Media Audit", description: "Analyze your current social presence, audience demographics, and competitor strategies. Identify what's working and untapped opportunities." },
-        { number: 2, title: "Strategy Development", description: "Create a comprehensive social media strategy aligned with your business goals. Define content pillars, posting frequency, and engagement tactics." },
-        { number: 3, title: "Content Calendar Planning", description: "Plan and schedule content 30 days in advance. Mix promotional, educational, and entertaining posts for maximum engagement." },
-        { number: 4, title: "Content Creation", description: "Design eye-catching graphics, write compelling captions, and create videos. Professional content that stops the scroll and drives action." },
-        { number: 5, title: "Community Management", description: "Monitor comments, messages, and mentions daily. Engage with your audience authentically and handle customer inquiries promptly." },
-        { number: 6, title: "Analytics & Optimization", description: "Track performance metrics and provide monthly reports. Continuously optimize strategy based on what content performs best." },
+        {
+            title: "Social Media Audit",
+            content: (
+                <PhaseContent
+                    text="Analyze your current social presence, audience demographics, and competitor strategies. Identify what's working and untapped opportunities."
+                    imageSrc={phase1}
+                    list={[
+                        "Profile & content performance audit",
+                        "Audience demographics & behavior analysis",
+                        "Competitor benchmarking",
+                        "Platform-wise opportunity identification",
+                        "Engagement & reach gap analysis",
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Strategy Development",
+            content: (
+                <PhaseContent
+                    text="Create a comprehensive social media strategy aligned with your business goals. Define content pillars, posting frequency, and engagement tactics."
+                    imageSrc={phase2}
+                    list={[
+                        "Goal & KPI definition",
+                        "Content pillars & themes",
+                        "Platform-specific strategy",
+                        "Posting frequency & timing",
+                        "Engagement & growth tactics",
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Content Calendar Planning",
+            content: (
+                <PhaseContent
+                    text="Plan and schedule content 30 days in advance. Mix promotional, educational, and entertaining posts for maximum engagement."
+                    imageSrc={phase3}
+                    list={[
+                        "Monthly content calendar",
+                        "Campaign & event planning",
+                        "Post format & platform mapping",
+                        "Hashtag & caption planning",
+                        "Approval & scheduling workflow",
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Content Creation",
+            content: (
+                <PhaseContent
+                    text="Design eye-catching graphics, write compelling captions, and create videos. Professional content that stops the scroll and drives action."
+                    imageSrc={phase4}
+                    list={[
+                        "Branded graphic design",
+                        "Short-form video & reels",
+                        "Copywriting & caption crafting",
+                        "Story & carousel creation",
+                        "Platform-optimized content formats",
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Community Management",
+            content: (
+                <PhaseContent
+                    text="Monitor comments, messages, and mentions daily. Engage with your audience authentically and handle customer inquiries promptly."
+                    imageSrc={phase5}
+                    list={[
+                        "Daily comment & DM monitoring",
+                        "Audience engagement & replies",
+                        "Brand voice & tone consistency",
+                        "Query escalation handling",
+                        "Reputation & sentiment management",
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Analytics & Optimization",
+            content: (
+                <PhaseContent
+                    text="Track performance metrics and provide monthly reports. Continuously optimize strategy based on what content performs best."
+                    imageSrc={phase6}
+                    list={[
+                        "Engagement & reach tracking",
+                        "Content performance analysis",
+                        "Follower growth monitoring",
+                        "Monthly performance reports",
+                        "Strategy refinement & optimization",
+                    ]}
+                />
+            )
+        },
     ];
+
 
     const features = [
         { icon: <IconCalendar />, title: "Content Calendar Management", description: "Strategic planning and scheduling of posts across all your social platforms." },
@@ -31,83 +135,48 @@ const SocialMediaManagementPage = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Build an engaged community that loves your brand and drives real business results.
-                </h3>
-                <p className='text-foreground/70'>
-                    Stop posting randomly and start strategically. We handle everything—content creation, scheduling, community management, and analytics—so you can focus on running your business while your social presence grows.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+        <Left
+            heading='Build an engaged community that loves your brand and drives real business results.'
+            subHeading='Stop posting randomly and start strategically. We handle everything—content creation, scheduling, community management, and analytics—so you can focus on running your business while your social presence grows.'
+        />
+
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img
-                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop"
-                className='object-cover rounded-br-3xl'
-                alt="Social Media Management"
-            />
-        </div>
+        <Right icon={<icons.digitalPresence.socialMediaManagement.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "platforms",
-    //     icon: <IconSocial className="text-purple-700" />
-    // }
 
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconBrandInstagram className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
 
     useEffect(() => {
-            document.title = "Social Media Management | Acurve"
-        }, [])
+        document.title = "Social Media Management | Acurve"
+    }, [])
+
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
 
     return (
         <div>
-            <MainSection text='Social Media Management' leftSection={left} rightSection={right} />
+            <MainSection text='Social Media Management' leftSection={left} rightSection={right} icon={<icons.digitalPresence.socialMediaManagement.icon />} />
 
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our Social Media Management Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?q=80&w=2074&auto=format&fit=crop"
-                        imageAlt="Social media management process"
+                    <SectionHeader heading='Our Social Media Management Process' />
+                    <Timeline
+                        data={processStepsList}
                     />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='Platforms We Manage' eyebrow={eyebrow} />
+                    <SectionHeader heading='Tools we use' />
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal} />
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in Social Media Management?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in Social Media Management?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>

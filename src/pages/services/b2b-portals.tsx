@@ -1,24 +1,122 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import { IconChartBar, IconCloud, IconDatabaseCog, IconLock, IconStar, IconUsers, IconUserShield } from '@tabler/icons-react';
+import { IconChartBar, IconCloud, IconDatabaseCog, IconLock, IconUsers, IconUserShield } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
-import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import Right from './RightSection';
+import Left from './LeftSection';
+import PhaseContent from '@/components/shared/PhaseContent';
+import { Timeline } from '@/components/ui/timeline';
+
+import phase1 from "@/assets/b2b-portals/phase1.webp"
+import phase2 from "@/assets/b2b-portals/phase2.webp"
+import phase3 from "@/assets/b2b-portals/phase3.webp"
+import phase4 from "@/assets/b2b-portals/phase4.webp"
+import phase5 from "@/assets/b2b-portals/phase5.webp"
+import phase6 from "@/assets/b2b-portals/phase6.webp"
+import { techStackList } from '@/constants/techstack/b2b-portals';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
+import CallToAction from '@/components/shared/CallToAction';
 
 const B2BPortals = () => {
     const processStepsList = [
-        { number: 1, title: "Business Analysis", description: "Deep dive into your business model, workflows, and stakeholder requirements. We map out user journeys and identify automation opportunities." },
-        { number: 2, title: "Architecture Design", description: "Design scalable system architecture with secure data flows. We plan integrations, APIs, and database structures for optimal performance." },
-        { number: 3, title: "Portal Development", description: "Build robust, feature-rich portals with role-based access control. Custom dashboards, reporting tools, and automated workflows." },
-        { number: 4, title: "Integration & Testing", description: "Connect with your existing systems—CRM, ERP, payment gateways. Comprehensive testing ensures seamless data synchronization." },
-        { number: 5, title: "User Training & Onboarding", description: "Complete training for your team and partner organizations. We provide documentation and hands-on guidance for smooth adoption." },
-        { number: 6, title: "Launch & Optimization", description: "Phased rollout with continuous monitoring and optimization. Ongoing support to enhance features based on user feedback." },
+        {
+            title: "Business Analysis",
+            content: (
+                <PhaseContent
+                    text="Deep dive into your business model, workflows, and stakeholder requirements. We map out user journeys and identify automation opportunities."
+                    imageSrc={phase1}
+                    list={[
+                        "Business goals & requirements analysis",
+                        "Workflow & process mapping",
+                        "User roles & journey definition",
+                        "Automation opportunity identification",
+                    ]}
+                />
+            )
+        },
+
+        {
+            title: "Architecture Design",
+            content: (
+                <PhaseContent
+                    text="Design scalable system architecture with secure data flows. We plan integrations, APIs, and database structures for optimal performance."
+                    imageSrc={phase2}
+                    list={[
+                        "System & application architecture",
+                        "API & integration planning",
+                        "Data flow & security design",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Portal Development",
+            content: (
+                <PhaseContent
+                    text="Build robust, feature-rich portals with role-based access control. Custom dashboards, reporting tools, and automated workflows."
+                    imageSrc={phase3}
+                    list={[
+                        "Role-based access control",
+                        "Custom dashboards & reporting",
+                        "Workflow automation",
+                        "Scalable frontend & backend development",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Integration & Testing",
+            content: (
+                <PhaseContent
+                    text="Connect with your existing systems—CRM, ERP, payment gateways. Comprehensive testing ensures seamless data synchronization."
+                    imageSrc={phase4}
+                    list={[
+                        "Third-party system integrations",
+                        "Data synchronization & validation",
+                        "End-to-end testing & QA",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "User Training & Onboarding",
+            content: (
+                <PhaseContent
+                    text="Complete training for your team and partner organizations. We provide documentation and hands-on guidance for smooth adoption."
+                    imageSrc={phase5}
+                    list={[
+                        "User training sessions",
+                        "Technical & user documentation",
+                        "Onboarding support",
+                    ]}
+                />
+            )
+        }
+        ,
+        {
+            title: "Launch & Optimization",
+            content: (
+                <PhaseContent
+                    text="Phased rollout with continuous monitoring and optimization. Ongoing support to enhance features based on user feedback."
+                    imageSrc={phase6}
+                    list={[
+                        "Phased launch & deployment",
+                        "Performance monitoring",
+                        "Continuous improvements & optimization",
+                    ]}
+                />
+            )
+        }
+        ,
     ];
 
     const features = [
@@ -31,82 +129,44 @@ const B2BPortals = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Enterprise B2B portals that streamline operations and strengthen partner relationships.
-                </h3>
-                <p className='text-foreground/70'>
-                    We build powerful B2B platforms that connect businesses, automate workflows, and provide real-time visibility across your partner ecosystem. From supplier portals to distributor networks, we deliver solutions that scale.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+        <Left
+            heading='Enterprise B2B portals that streamline operations and strengthen partner relationships.'
+            subHeading='We build powerful B2B platforms that connect businesses, automate workflows, and provide real-time visibility across your partner ecosystem. From supplier portals to distributor networks, we deliver solutions that scale.'
+        />
+
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop"
-                className='object-cover rounded-br-3xl'
-                alt="B2B Portal Dashboard"
-            />
-        </div>
+        <Right icon={<icons.digitalSolutions.b2bportals.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "techstack",
-    //     icon: <IconBuildingStore className="text-purple-700" />
-    // }
 
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconDatabaseCog className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
     useEffect(() => {
-            document.title = "B2B Portals | Acurve"
-        }, [])
+        document.title = "B2B Portals | Acurve"
+    }, [])
 
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
     return (
         <div>
-            <MainSection text='B2B Portals' leftSection={left} rightSection={right} />
+            <MainSection text='B2B Portals' leftSection={left} rightSection={right} icon={<icons.digitalSolutions.b2bportals.icon />} />
 
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our B2B Portal Development Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
-                        imageAlt="B2B portal development process"
-                    />
+                    <SectionHeader heading='Our B2B Portal Development Process' />
+                    <Timeline data={processStepsList} />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='Technology Stack for B2B Portals' eyebrow={eyebrow} />
+                    <SectionHeader heading='Technology Stack for B2B Portals'  />
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal}/>
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in B2B Portal Development?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in B2B Portal Development?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>

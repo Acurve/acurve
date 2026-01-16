@@ -4,15 +4,15 @@ import { useEffect, useState, useCallback, type ComponentType } from 'react'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '../ui/navigation-menu'
 import { ChevronDown, Menu, X, ChevronRight, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import Acurve from '../svgs/Acurve'
 import { servicesList } from '@/constants/serviceList'
 import { NavLink, useLocation } from 'react-router'
 import { IconRocket } from '@tabler/icons-react'
 import { blueGradientClass } from '@/constants/gradients.constants'
 import { Button } from '../ui/button'
-import { Navbar, NavBody } from '../ui/resizable-navbar'
-import { useNavbar } from './NavbarContext'
+import { Navbar as ResizableNavbar, NavBody as ResizableNavBody } from '../ui/resizable-navbar'
+import { useHeroStore } from '@/store/useHeroStore'
 
 // ============================================
 // TYPES - Centralized and improved
@@ -340,7 +340,6 @@ const DesktopServicesDropdown = ({ categories }: DesktopServicesDropdownProps) =
 const NavigationBar = () => {
     const location = useLocation()
     // const navbarState = useNavbarScroll()
-    const { theme } = useNavbar()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
     // Transform services once
@@ -390,18 +389,17 @@ const NavigationBar = () => {
         setIsNavbarOpen(prev => !prev)
     }, [])
 
-    useEffect(() => {
-        console.log(theme)
-    }, [])
+    const heroInView = useHeroStore(s => s.heroInView)
+    const showAcurve = location.pathname === "/" && heroInView
 
     return (
-        <Navbar>
-            <NavBody>
+        <ResizableNavbar>
+            <ResizableNavBody className={cn(isNavbarOpen && "rounded-md!")}>
                 <nav
                     className={cn(
                         "top-0 w-full transition-all rounded-full px-6 duration-300",
                         "backdrop-blur-2xl",
-                        isNavbarOpen && "backdrop-blur-3xl rounded-md!",
+                        isNavbarOpen && "backdrop-blur-3xl rounded-md! transition-none",
                         `relative bg-white/15  border border-white/30    backdrop-blur-[20px] [-webkit-backdrop-filter:blur(20px)]    shadow-[0_8px_32px_rgba(0,0,0,0.1)]    before:content-['']    before:absolute before:top-0 before:left-0 before:right-0    before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.8),transparent)]`
                     )}
                     role="navigation"
@@ -409,7 +407,7 @@ const NavigationBar = () => {
                 >
                     <div className={cn(
                         'flex flex-col md:flex-row md:justify-between overflow-hidden md:overflow-visible min-h-16 md:items-center h-16',
-                        isNavbarOpen && "min-h-screen h-screen"
+                        isNavbarOpen && "min-h-[calc(100dvh-16px)] h-[calc(100dvh-16px)]"
                     )}>
                         {/* Logo and Mobile Toggle */}
                         <div className="flex items-center min-h-16 justify-between">
@@ -420,10 +418,33 @@ const NavigationBar = () => {
                                         className={cn(
                                             " size-12",
                                         )} />
-                                    <span className={cn(
-                                        theme === "light" && "text-background",
-                                        theme === "dark" && "text-foreground"
-                                    )}>Acurve</span>
+                                    <AnimatePresence>
+                                        {
+                                            showAcurve &&
+                                            <motion.span
+                                                initial={{
+                                                    x: -20,
+                                                    opacity: 0
+                                                }}
+                                                animate={{
+                                                    x: 0,
+                                                    opacity: 1,
+                                                    transition: {
+                                                        duration: 0.7
+                                                    }
+                                                }}
+                                                exit={{
+                                                    x: -20,
+                                                    opacity: 0,
+                                                    transition: {
+                                                        duration: 0.7
+                                                    }
+                                                }}
+                                            >
+                                                Acurve
+                                            </motion.span>
+                                        }
+                                    </AnimatePresence>
                                 </h1>
                             </NavLink>
 
@@ -451,8 +472,6 @@ const NavigationBar = () => {
                                                     asChild
                                                     className={cn(
                                                         'font-semibold',
-                                                        theme === "dark" && "text-foreground",
-                                                        theme === "light" && "text-background",
                                                         location.pathname === link.href && "before:max-w-24"
                                                     )}
                                                     variant="underline"
@@ -463,8 +482,6 @@ const NavigationBar = () => {
                                                 <>
                                                     <NavigationMenuTrigger className={cn(
                                                         "font-semibold",
-                                                        theme === "dark" && "text-foreground",
-                                                        theme === "light" && "text-background",
                                                     )}>
                                                         {link.name}
                                                     </NavigationMenuTrigger>
@@ -507,8 +524,8 @@ const NavigationBar = () => {
                         </div>
                     </div>
                 </nav>
-            </NavBody>
-        </Navbar>
+            </ResizableNavBody>
+        </ResizableNavbar>
     )
 }
 

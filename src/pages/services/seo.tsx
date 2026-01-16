@@ -1,25 +1,129 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import { IconChartLine, IconFileText, IconLink, IconReportSearch, IconSearch, IconSeo, IconStar, IconTargetArrow } from '@tabler/icons-react';
+import { IconChartLine, IconFileText, IconLink, IconReportSearch, IconSearch, IconSeo } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import { Timeline } from '@/components/ui/timeline';
+import Right from './RightSection';
+import Left from './LeftSection';
+import PhaseContent from '@/components/shared/PhaseContent';
+
+
+import phase1 from "@/assets/seo/phase1.webp"
+import phase2 from "@/assets/seo/phase2.webp"
+import phase3 from "@/assets/seo/phase3.webp"
+import phase4 from "@/assets/seo/phase4.webp"
+import phase5 from "@/assets/seo/phase5.webp"
+import phase6 from "@/assets/seo/phase6.webp"
+import { techStackList } from '@/constants/techstack/seo';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
 
 const SEOPage = () => {
     const processStepsList = [
-        { number: 1, title: "SEO Audit & Analysis", description: "Comprehensive analysis of your website's current SEO performance, technical issues, and competitive landscape. Identify quick wins and long-term opportunities." },
-        { number: 2, title: "Keyword Research", description: "Deep keyword research to find high-value search terms your customers use. Balance search volume, competition, and buying intent for maximum ROI." },
-        { number: 3, title: "Technical SEO Optimization", description: "Fix technical issues—site speed, mobile-friendliness, crawlability, schema markup. Ensure search engines can properly index your content." },
-        { number: 4, title: "On-Page Optimization", description: "Optimize titles, meta descriptions, headers, and content structure. Make every page relevant and compelling for both users and search engines." },
-        { number: 5, title: "Content Strategy & Creation", description: "Create SEO-optimized content that answers user questions and ranks for target keywords. Blog posts, landing pages, and resource content." },
-        { number: 6, title: "Link Building & Monitoring", description: "Build high-quality backlinks from authoritative sites. Continuous monitoring and reporting on rankings, traffic, and conversions." },
-    ];
+    {
+        title: "SEO Audit & Analysis",
+        content: (
+            <PhaseContent
+                text="Comprehensive analysis of your website's current SEO performance, technical issues, and competitive landscape. Identify quick wins and long-term opportunities."
+                imageSrc={phase1}
+                list={[
+                    "Technical SEO audit",
+                    "Site health & performance analysis",
+                    "Competitor SEO benchmarking",
+                    "Indexing & crawlability review",
+                    "Quick-win opportunity identification",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Keyword Research",
+        content: (
+            <PhaseContent
+                text="Deep keyword research to find high-value search terms your customers use. Balance search volume, competition, and buying intent for maximum ROI."
+                imageSrc={phase2}
+                list={[
+                    "Search intent analysis",
+                    "High-conversion keyword discovery",
+                    "Competitor keyword gap analysis",
+                    "Long-tail keyword identification",
+                    "Keyword prioritization roadmap",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Technical SEO Optimization",
+        content: (
+            <PhaseContent
+                text="Fix technical issues—site speed, mobile-friendliness, crawlability, schema markup. Ensure search engines can properly index your content."
+                imageSrc={phase3}
+                list={[
+                    "Page speed & Core Web Vitals fixes",
+                    "Mobile usability optimization",
+                    "Crawl & index issue resolution",
+                    "Schema & structured data setup",
+                    "URL & internal linking optimization",
+                ]}
+            />
+        )
+    },
+    {
+        title: "On-Page Optimization",
+        content: (
+            <PhaseContent
+                text="Optimize titles, meta descriptions, headers, and content structure. Make every page relevant and compelling for both users and search engines."
+                imageSrc={phase4}
+                list={[
+                    "Title & meta optimization",
+                    "Header & content structure improvements",
+                    "Keyword placement & density tuning",
+                    "Image alt text optimization",
+                    "Internal linking strategy",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Content Strategy & Creation",
+        content: (
+            <PhaseContent
+                text="Create SEO-optimized content that answers user questions and ranks for target keywords. Blog posts, landing pages, and resource content."
+                imageSrc={phase5}
+                list={[
+                    "Content gap analysis",
+                    "SEO content planning",
+                    "Blog & landing page creation",
+                    "Search intent–focused writing",
+                    "Content optimization & updates",
+                ]}
+            />
+        )
+    },
+    {
+        title: "Link Building & Monitoring",
+        content: (
+            <PhaseContent
+                text="Build high-quality backlinks from authoritative sites. Continuous monitoring and reporting on rankings, traffic, and conversions."
+                imageSrc={phase6}
+                list={[
+                    "High-quality backlink acquisition",
+                    "Outreach & digital PR",
+                    "Toxic link monitoring",
+                    "Rank & traffic tracking",
+                    "Monthly SEO performance reports",
+                ]}
+            />
+        )
+    },
+];
+
 
     const features = [
         { icon: <IconSearch />, title: "Keyword Research", description: "Data-driven keyword targeting that captures high-intent search traffic." },
@@ -31,81 +135,45 @@ const SEOPage = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1562577309-2592ab84b1bc?q=80&w=2074&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Rank higher on Google. Drive organic traffic that converts.
-                </h3>
-                <p className='text-foreground/70'>
-                    Stop relying on paid ads. Our proven SEO strategies get your website ranking on page one for keywords that matter. More visibility, more traffic, more customers—all without paying for every click.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+        <Left
+            heading='Rank higher on Google. Drive organic traffic that converts'
+            subHeading='Stop relying on paid ads. Our proven SEO strategies get your website ranking on page one for keywords that matter. More visibility, more traffic, more customers—all without paying for every click.'
+        />
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img
-                src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?q=80&w=2074&auto=format&fit=crop"
-                className='object-cover rounded-br-3xl'
-                alt="SEO Services"
-            />
-        </div>
+        <Right icon={<icons.digitalPresence.seo.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "tools",
-    //     icon: <IconBrandGoogle className="text-purple-700" />
-    // }
 
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconTargetArrow className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
     useEffect(() => {
         document.title = "SEO | Acurve"
     }, [])
+
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
     return (
         <div>
-            <MainSection text='SEO' leftSection={left} rightSection={right} />
+            <MainSection text='SEO' leftSection={left} rightSection={right} icon={<icons.digitalPresence.seo.icon />} />
 
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our SEO Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop"
-                        imageAlt="SEO optimization process"
+                    <SectionHeader heading='Our SEO Process' />
+                    <Timeline
+                        data={processStepsList}
                     />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='SEO Tools & Analytics' eyebrow={eyebrow} />
+                    <SectionHeader heading='SEO Tools & Analytics'/>
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal} />
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in SEO Services?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in SEO Services?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>

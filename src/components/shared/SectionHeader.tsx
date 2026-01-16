@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 import type { ClassNameProps } from "@/types/global"
+import { TextReveal } from '../ui/text-reveal';
 
 export interface SectionHeaderProps {
     heading: string;
@@ -18,11 +19,8 @@ export interface SectionHeaderProps {
 const SectionHeader = ({
     className = "",
     heading,
-    subHeading,
     headingClassName = "",
-    subHeadingClassName = "",
     align = "center",
-    eyebrow,
 }: ClassNameProps & SectionHeaderProps) => {
     return (
         <div
@@ -31,40 +29,20 @@ const SectionHeader = ({
                 className
             )}
         >
-            {eyebrow && (
-                <p
-                    className={cn(
-                        "flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-foreground/70",
-                        align === "center" && "justify-center",
-                        eyebrow.className
-                    )}
-                >
-                    {eyebrow.icon}
-                    {eyebrow.text}
-                </p>
-            )}
+
 
             <h2
                 className={cn(
-                    "text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight",
-                    eyebrow && "mt-3",
+                    "w-full flex",
+                    align === "center" && "mx-auto",
                     headingClassName
                 )}
             >
-                {heading}
-            </h2>
+                <TextReveal className='text-2xl mx-auto w-max sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight'>
 
-            {subHeading && (
-                <p
-                    className={cn(
-                        "mt-3 text-base md:text-lg text-foreground/40 max-w-2xl",
-                        align === "center" && "mx-auto",
-                        subHeadingClassName
-                    )}
-                >
-                    {subHeading}
-                </p>
-            )}
+                    {heading}
+                </TextReveal>
+            </h2>
         </div>
     );
 };

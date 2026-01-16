@@ -304,6 +304,8 @@ import { Mail, Phone, MapPin, Send, Sparkles, ChevronDown } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router';
 import Section from '@/components/layout/Section';
+import { toast } from "react-hot-toast"
+import Animate from '@/components/animations/Animate';
 
 // Country codes data
 const countryCodes = [
@@ -343,59 +345,56 @@ export default function ContactPage() {
     });
 
     const onSubmit = async (data: ContactFormValues) => {
+        const toastId = toast.loading("Submitting your request...");
+
         try {
-            // Combine country code with phone number
             const fullPhoneNumber = `${selectedCountry.code}${data.phone}`;
 
-            // Prepare payload matching API structure
             const payload = {
                 name: data.fullName,
                 email: data.email,
                 phoneNumber: fullPhoneNumber,
                 service: data.serviceType,
                 budget: data.budgetRange,
-                message: data.message
+                message: data.message,
             };
 
-            console.log('Submitting form data:', payload);
+            const api = `${import.meta.env.VITE_API_PREFIX}/api/v1/contacts`;
 
-            // Make API call
-            const api = `${import.meta.env.VITE_API_PREFIX}/api/v1/contacts`
             const response = await fetch(api, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
             });
 
-            // Check if response is ok
             if (!response.ok) {
                 const errorData = await response.json().catch(() => null);
-                throw new Error(errorData?.message || `Error: ${response.status} ${response.statusText}`);
+                throw new Error(errorData?.message || "Something went wrong");
             }
 
-            // Parse response
-            const result = await response.json();
-            console.log('Success:', result);
+            await response.json();
 
-            // Show success message
-            alert('Message sent successfully! We will get back to you soon.');
+            toast.success(
+                <div>
+                    <p className="font-semibold">Submitted successfully</p>
+                    <p className="text-sm opacity-80">
+                        We will get back to you shortly
+                    </p>
+                </div>,
+                { id: toastId }
+            );
 
-            // Reset form
             reset();
-
         } catch (error) {
-            console.error('Error submitting form:', error);
-
-            // Show error message
-            if (error instanceof Error) {
-                alert(`Failed to send message: ${error.message}`);
-            } else {
-                alert('Failed to send message. Please try again.');
-            }
+            toast.error(
+                error instanceof Error
+                    ? error.message
+                    : "Failed to send message. Please try again.",
+                { id: toastId }
+            );
         }
     };
+
 
     const handleCountrySelect = (country: typeof countryCodes[0]) => {
         setSelectedCountry(country);
@@ -403,45 +402,55 @@ export default function ContactPage() {
     };
 
     const serviceOptions = [
-        'graphic design',
-        'web development',
-        'marketing',
-        'seo',
-        'logo design',
-        'video editing',
-        'other',
+        'Custom Web Development',
+        'B2B Portals',
+        'Customer & Vendor Portals',
+        'Digital Marketing',
+        'Branding',
+        'SEO',
+        'Social Media Management',
+        'CRM & ERP Integration',
+        'API Development & System Connectivity',
+        'Cloud Migration & Hosting',
+        'Maintenance & Technical Support',
+        'Video Editing',
+        'Graphic Design',
+        'Logo Design'
     ];
 
     const budgetOptions = [
-        'Not decided yet',
-        '₹10,000 - ₹20,000',
-        '₹20,000 - ₹30,000',
-        '₹30,000 - ₹50,000',
-        '₹50,000+',
+        "Not decided",
+        "Under $500",
+        "$500 - $1,000",
+        "$1,000 - $5,000",
+        "$5,000+",
     ];
 
     return (
         <Section>
 
 
-                <div className="min-h-screen  relative overflow-hidden">
-                    {/* Background Effects */}
-                    <div className="absolute inset-0">
-                        <div
-                            className="absolute inset-0 opacity-[0.02]"
-                            style={{
-                                backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            <div className="min-h-screen  relative overflow-hidden">
+                {/* Background Effects */}
+                <div className="absolute inset-0">
+                    <div
+                        className="absolute inset-0 opacity-[0.02]"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
-                                backgroundSize: '50px 50px'
-                            }}
-                        />
-                        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-                        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-                    </div>
+                            backgroundSize: '50px 50px'
+                        }}
+                    />
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+                </div>
 
-                    <div className="relative md:max-w-3xl lg:max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-32">
-                        <div className="grid lg:grid-cols-2 gap-16 items-start">
-                            {/* Left Column - Info */}
+                <div className="relative md:max-w-3xl lg:max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-32">
+                    <div className="grid lg:grid-cols-2 gap-16 items-start">
+                        {/* Left Column - Info */}
+                        <Animate type='fade-up' duration={2}>
+
+
                             <div className="space-y-12">
                                 {/* Header */}
                                 <div>
@@ -515,16 +524,11 @@ export default function ContactPage() {
                                     </div>
                                 </div>
 
-                                {/* Trust Badge */}
-                                <div className="p-6 bg-white/2 backdrop-blur-xl border border-white/10 rounded-2xl">
-                                    <p className="text-white/70 text-sm leading-relaxed">
-                                        <span className="font-semibold text-white">We respect your privacy.</span> Your information
-                                        is secure and will never be shared with third parties.
-                                    </p>
-                                </div>
                             </div>
+                        </Animate>
 
-                            {/* Right Column - Form */}
+                        {/* Right Column - Form */}
+                        <Animate type='fade-up' duration={2}>
                             <div className="relative">
                                 <div className="absolute -inset-px bg-white/10 rounded-3xl opacity-50 blur-sm" />
 
@@ -700,9 +704,10 @@ export default function ContactPage() {
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </Animate>
                     </div>
                 </div>
-        </Section>
+            </div>
+        </Section >
     );
 }

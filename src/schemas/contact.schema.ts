@@ -1,22 +1,30 @@
 import * as zod from "zod";
 
 export const ServiceType = zod.enum([
-    "graphic design",
-    "web development",
-    "marketing",
-    "seo",
-    "logo design",
-    "video editing",
-    "other"
+    'Custom Web Development',
+    'B2B Portals',
+    'Customer & Vendor Portals',
+    'Digital Marketing',
+    'Branding',
+    'SEO',
+    'Social Media Management',
+    'CRM & ERP Integration',
+    'API Development & System Connectivity',
+    'Cloud Migration & Hosting',
+    'Maintenance & Technical Support',
+    'Video Editing',
+    'Graphic Design',
+    'Logo Design'
 ]);
 
 export const BudgetRange = zod.enum([
-    "Not decided yet",
-    "₹10,000 - ₹20,000",
-    "₹20,000 - ₹30,000",
-    "₹30,000 - ₹50,000",
-    "₹50,000+",
-])
+    "Not decided",
+    "Under $500",
+    "$500 - $1,000",
+    "$1,000 - $5,000",
+    "$5,000+",
+]);
+
 
 export const contactFormSchema = zod.object({
     fullName: zod

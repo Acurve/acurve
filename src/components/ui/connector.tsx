@@ -30,7 +30,6 @@ export const AnimatedConnector: React.FC<AnimatedConnectorProps> = ({
     targetSide = 'left',
     color = '#6366f1',
     strokeWidth = 2,
-    animationDuration = 1500,
     className = '',
 }) => {
     const [pathData, setPathData] = useState<string>('');

@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import ContactPage from './ContactForm'
-import { NavbarObserver } from '@/components/layout/NavbarObserver'
 
 const Contact = () => {
     useEffect(() => {
@@ -8,10 +7,7 @@ const Contact = () => {
     }, [])
     return (
         <div>
-            <NavbarObserver theme='dark'>
-
                 <ContactPage />
-            </NavbarObserver>
         </div>
     )
 }

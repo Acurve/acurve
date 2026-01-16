@@ -1,25 +1,128 @@
-import SectionHeader, { type SectionHeaderProps } from '@/components/shared/SectionHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
 
-import { Button } from '@/components/ui/button';
-import { IconDeviceTv, IconMovie, IconMusic, IconPlayerPlay, IconScissors, IconSparkles, IconStar, IconWand } from '@tabler/icons-react';
+import { IconDeviceTv, IconMovie, IconMusic, IconScissors, IconSparkles, IconWand } from '@tabler/icons-react';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MainSection from '@/components/shared/main-section';
-import { ProcessSteps } from '@/components/shared/process-steps';
 import Features from '@/components/shared/features';
-import { NavLink } from 'react-router';
 import CallToAction from '@/components/shared/CallToAction';
 import { useEffect } from 'react';
+import { icons } from '@/constants/icons';
+import { Timeline } from '@/components/ui/timeline';
+import Right from './RightSection';
+import Left from './LeftSection';
+import PhaseContent from '@/components/shared/PhaseContent';
+
+import phase1 from "@/assets/video-editing/phase1.webp"
+import phase2 from "@/assets/video-editing/phase2.webp"
+import phase3 from "@/assets/video-editing/phase3.webp"
+import phase4 from "@/assets/video-editing/phase4.webp"
+import phase5 from "@/assets/video-editing/phase5.webp"
+import phase6 from "@/assets/video-editing/phase6.webp"
+import { techStackList } from '@/constants/techstack/video-editing';
+import TechContainer from './TechContainer';
+import StaggeredLayout from '@/components/shared/staggered-layout';
 
 const VideoEditingPage = () => {
     const processStepsList = [
-        { number: 1, title: "Creative Brief & Review", description: "Understand your video goals, target audience, and desired style. Review raw footage and discuss creative direction together." },
-        { number: 2, title: "Initial Edit & Assembly", description: "Organize footage, create initial sequence, and establish pacing. Build the story structure with rough cuts and scene selection." },
-        { number: 3, title: "Advanced Editing", description: "Fine-tune timing, add transitions, color correction, and audio mixing. Layer in music, sound effects, and voiceover work." },
-        { number: 4, title: "Motion Graphics & Effects", description: "Add animated titles, lower thirds, logos, and visual effects. Create custom graphics and overlays that enhance your message." },
-        { number: 5, title: "Review & Revisions", description: "Present the edited video for your feedback. Two rounds of revisions included to perfect every detail." },
-        { number: 6, title: "Final Delivery", description: "Export optimized versions for different platforms—YouTube, Instagram, Facebook, website. Deliver source files if needed." },
+        {
+            title: "Creative Brief & Review",
+            content: (
+                <PhaseContent
+                    text="Understand your video goals, target audience, and desired style. Review raw footage and discuss creative direction together."
+                    imageSrc={phase1}
+                    list={[
+                        "Define video objectives clearly",
+                        "Identify target audience and their preferences",
+                        "Discuss desired style and tone",
+                        "Review raw footage together",
+                        "Align on creative direction"
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Initial Edit & Assembly",
+            content: (
+                <PhaseContent
+                    text="Organize footage, create initial sequence, and establish pacing. Build the story structure with rough cuts and scene selection."
+                    imageSrc={phase2}
+                    list={[
+                        "Sort and label all footage",
+                        "Create an initial sequence of scenes",
+                        "Establish pacing and timing",
+                        "Build rough story structure",
+                        "Select best takes for each scene"
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Advanced Editing",
+            content: (
+                <PhaseContent
+                    text="Fine-tune timing, add transitions, color correction, and audio mixing. Layer in music, sound effects, and voiceover work."
+                    imageSrc={phase3}
+                    list={[
+                        "Adjust clip timing for smooth flow",
+                        "Add transitions between scenes",
+                        "Apply color correction and grading",
+                        "Mix audio levels and enhance sound",
+                        "Incorporate music, effects, and voiceover"
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Motion Graphics & Effects",
+            content: (
+                <PhaseContent
+                    text="Add animated titles, lower thirds, logos, and visual effects. Create custom graphics and overlays that enhance your message."
+                    imageSrc={phase4}
+                    list={[
+                        "Design animated titles and text",
+                        "Create lower thirds and logos",
+                        "Add visual effects and overlays",
+                        "Customize graphics to match brand",
+                        "Integrate animations seamlessly into video"
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Review & Revisions",
+            content: (
+                <PhaseContent
+                    text="Present the edited video for your feedback. Two rounds of revisions included to perfect every detail."
+                    imageSrc={phase5}
+                    list={[
+                        "Present initial edit for feedback",
+                        "Implement first round of revisions",
+                        "Implement second round of revisions",
+                        "Fine-tune all details for perfection",
+                        "Ensure final video meets expectations"
+                    ]}
+                />
+            )
+        },
+        {
+            title: "Final Delivery",
+            content: (
+                <PhaseContent
+                    text="Export optimized versions for different platforms—YouTube, Instagram, Facebook, website. Deliver source files if needed."
+                    imageSrc={phase6}
+                    list={[
+                        "Export video in platform-specific formats",
+                        "Optimize resolution and file size",
+                        "Prepare versions for YouTube, Instagram, Facebook, website",
+                        "Deliver original source files if requested",
+                        "Ensure quality and compatibility across devices"
+                    ]}
+                />
+            )
+        },
     ];
+
 
     const features = [
         { icon: <IconScissors />, title: "Professional Cutting", description: "Precise cuts, seamless transitions, and perfect pacing that keeps viewers engaged." },
@@ -31,82 +134,46 @@ const VideoEditingPage = () => {
     ];
 
     const left = (
-        <div className='relative space-y-10 bg-no-repeat h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-0'>
-            <div className='lg:hidden absolute top-0 left-0 right-0 bottom-0 -z-2' style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop)",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-            }} />
-            <div className="lg:hidden absolute -z-1 bg-black/80 top-0 left-0 bottom-0 right-0 w-full h-full" />
-            <div className='space-y-5'>
-                <h3 className="md:text-4xl sm:text-3xl text-2xl font-bold">
-                    Transform raw footage into compelling stories that captivate and convert.
-                </h3>
-                <p className='text-foreground/70'>
-                    Great video editing makes the difference between content people scroll past and content they watch, share, and remember. We craft polished, professional videos—from corporate promos to social media content—that drive results.
-                </p>
-            </div>
-            <NavLink to="/contact">
-                <Button className='cursor-pointer bg-linear-to-r from-blue-600 to-blue-500' size="lg">Get started</Button>
-            </NavLink>
-        </div>
+        <Left
+            heading='Transform raw footage into compelling stories that captivate and convert.'
+            subHeading='Great video editing makes the difference between content people scroll past and content they watch, share, and remember. We craft polished, professional videos—from corporate promos to social media content—that drive results.'
+        />
     )
 
     const right = (
-        <div className='relative w-full flex'>
-            <div className="absolute inset-0 bg-linear-to-r from-background to-transparent"></div>
-            <div className="absolute inset-0 bg-linear-to-b from-background to-transparent"></div>
-            <img
-                src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop"
-                className='object-cover rounded-br-3xl'
-                alt="Video Editing Services"
-            />
-        </div>
+        <Right icon={<icons.creativity.videoEditing.icon />} />
     )
 
-    // const eyebrow: SectionHeaderProps["eyebrow"] = {
-    //     text: "software",
-    //     icon: <IconVideo className="text-purple-700" />
-    // }
-
-    const processEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "process",
-        icon: <IconPlayerPlay className="text-blue-400" />
-    }
-
-    const featuresEyebrow: SectionHeaderProps["eyebrow"] = {
-        text: "features",
-        icon: <IconStar className="text-yellow-400" />
-    }
 
     useEffect(() => {
-            document.title = "Video Editing | Acurve"
-        }, [])
+        document.title = "Video Editing | Acurve"
+    }, [])
+
+    const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
     return (
         <div>
-            <MainSection text='Video Editing' leftSection={left} rightSection={right} />
+            <MainSection text='Video Editing' leftSection={left} rightSection={right} icon={<icons.creativity.videoEditing.icon />} />
 
             <Section className='overflow-visible' id='process'>
                 <Container>
-                    <SectionHeader heading='Our Video Editing Process' eyebrow={processEyebrow} />
-                    <ProcessSteps
-                        steps={processStepsList}
-                        image="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=2062&auto=format&fit=crop"
-                        imageAlt="Video editing process"
+                    <SectionHeader heading='Our Video Editing Process' />
+                    <Timeline
+                        data={processStepsList}
                     />
                 </Container>
             </Section>
 
-            {/* <Section id='techstack'>
+            <Section id='techstack'>
                 <Container>
-                    <SectionHeader heading='Video Editing Software We Use' eyebrow={eyebrow} />
+                    <SectionHeader heading='Video Editing Software We Use' />
                 </Container>
-                <StaggeredLayout rows={3} columns={8} className='my-20' />
-            </Section> */}
+                <StaggeredLayout list={techStackListFinal} />
+            </Section>
 
             <Section id='features'>
                 <Container>
-                    <SectionHeader heading='What is included in Video Editing?' eyebrow={featuresEyebrow} />
+                    <SectionHeader heading='What is included in Video Editing?' />
                     <Features featuresList={features} />
                 </Container>
             </Section>
