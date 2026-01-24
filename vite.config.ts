@@ -20,5 +20,6 @@ export default defineConfig({
     allowedHosts: [
       'unretreating-hang-pockily.ngrok-free.dev'
     ]
-  }
+  },
+  base:"/" // required for vercel
 })
