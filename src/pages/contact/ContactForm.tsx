@@ -488,7 +488,7 @@ export default function ContactPage() {
                                 {/* Contact Info Cards */}
                                 <div className="space-y-4">
                                     <NavLink
-                                        to="mailto:hello@acurve.com"
+                                        to="mailto:contact@acurve.in"
                                         className="group flex items-center gap-4 p-6 bg-white/2 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300"
                                     >
                                         <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
@@ -496,7 +496,7 @@ export default function ContactPage() {
                                         </div>
                                         <div>
                                             <p className="text-white/50 text-sm mb-1">Email us at</p>
-                                            <p className="text-white font-semibold">contact@acurve.com</p>
+                                            <p className="text-white font-semibold">contact@acurve.in</p>
                                         </div>
                                     </NavLink>
 
