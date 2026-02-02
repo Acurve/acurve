@@ -3,21 +3,30 @@ import { useNavigate } from 'react-router';
 import { useAuth } from '@/contexts/AuthContext';
 import { Lock, Mail, Eye, EyeOff, Shield } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema, type LoginFormData } from '@/schemas/login.schema';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
+  const onSubmit = async (data: LoginFormData) => {
     try {
-      const success = await login(email, password);
+      const success = await login(data.email, data.password);
       if (success) {
         toast.success('Login successful!');
         navigate('/admin');
@@ -26,8 +35,6 @@ export default function Login() {
       }
     } catch (error) {
       toast.error('An error occurred. Please try again.');
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -64,7 +71,7 @@ export default function Login() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Email */}
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm font-semibold text-foreground">
@@ -75,13 +82,16 @@ export default function Login() {
                 <input
                   id="email"
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-background/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all"
+                  {...register('email')}
+                  className={`w-full pl-12 pr-4 py-3 bg-background/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all ${
+                    errors.email ? 'border-red-500' : 'border-border'
+                  }`}
                   placeholder="admin@example.com"
-                  required
                 />
               </div>
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Password */}
@@ -94,11 +104,11 @@ export default function Login() {
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-12 py-3 bg-background/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all"
+                  {...register('password')}
+                  className={`w-full pl-12 pr-12 py-3 bg-background/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all ${
+                    errors.password ? 'border-red-500' : 'border-border'
+                  }`}
                   placeholder="Enter your password"
-                  required
                 />
                 <button
                   type="button"
@@ -108,15 +118,18 @@ export default function Login() {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-sm text-red-500">{errors.password.message}</p>
+              )}
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isSubmitting}
               className="w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
             >
-              {isLoading ? (
+              {isSubmitting ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   Logging in...
