@@ -15,6 +15,7 @@ import {
   Briefcase,
   ChevronDown,
   ChevronUp,
+  RefreshCw,
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
@@ -75,11 +76,35 @@ export default function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'new' | 'contacted' | 'completed'>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const handleLogout = () => {
     logout();
     toast.success('Logged out successfully');
     navigate('/login');
+  };
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      // Replace this with your actual API call to fetch contacts
+      // Example: const response = await fetch('YOUR_BACKEND_API/contacts');
+      // const data = await response.json();
+      // setSubmissions(data);
+      
+      // Simulating API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // For now, just reload mock data
+      setSubmissions([...mockData]);
+      
+      toast.success('Contacts refreshed successfully');
+    } catch (error) {
+      toast.error('Failed to refresh contacts');
+      console.error('[v0] Error refreshing contacts:', error);
+    } finally {
+      setIsRefreshing(false);
+    }
   };
 
   const filteredSubmissions = submissions.filter((submission) => {
@@ -130,13 +155,23 @@ export default function AdminDashboard() {
               <h1 className="text-2xl font-bold text-foreground">Admin Dashboard</h1>
               <p className="text-sm text-muted-foreground">Manage contact form submissions</p>
             </div>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-500 border border-red-500/20 rounded-xl hover:bg-red-500/20 transition-all"
-            >
-              <LogOut className="w-4 h-4" />
-              Logout
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleRefresh}
+                disabled={isRefreshing}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 border border-blue-500/20 rounded-xl hover:bg-blue-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                Refresh
+              </button>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-500 border border-red-500/20 rounded-xl hover:bg-red-500/20 transition-all"
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
