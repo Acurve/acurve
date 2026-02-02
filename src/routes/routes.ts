@@ -18,9 +18,8 @@ import SEOPage from "@/pages/services/seo";
 import SocialMediaManagementPage from "@/pages/services/social-media-management";
 import VideoEditingPage from "@/pages/services/video-editing";
 import Login from "@/pages/admin/Login";
-import AdminDashboard from "@/pages/admin/AdminDashboard";
-import AdminProtectedRoute from "@/components/AdminProtectedRoute";
 import { createBrowserRouter } from "react-router";
+import AdminRoute from "@/pages/admin/AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -111,11 +110,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/admin",
-        element: (
-            <AdminProtectedRoute>
-                <AdminDashboard />
-            </AdminProtectedRoute>
-        )
+        Component:AdminRoute
     },
     {
         path:'*',

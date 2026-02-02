@@ -25,9 +25,28 @@ export default function Login() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
+
+    const payload = {
+      email: data.email,
+      password: data.password
+    }
     try {
-      const success = await login(data.email, data.password);
-      if (success) {
+      const loginApi = `${import.meta.env.VITE_API_PREFIX}/api/v1/login`;
+      const response = await fetch(loginApi, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || "Something went wrong");
+      }
+
+      const status = await response.json()
+
+      if (status.success) {
+        login()
         toast.success('Login successful!');
         navigate('/admin');
       } else {
@@ -56,8 +75,8 @@ export default function Login() {
 
       {/* Login Card */}
       <div className="relative w-full max-w-md">
-        <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20 rounded-3xl opacity-50 blur-sm" />
-        
+        <div className="absolute -inset-px bg-linear-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20 rounded-3xl opacity-50 blur-sm" />
+
         <div className="relative bg-card/80 backdrop-blur-xl border border-border rounded-3xl p-8 space-y-8">
           {/* Header */}
           <div className="text-center space-y-4">
@@ -83,9 +102,8 @@ export default function Login() {
                   id="email"
                   type="email"
                   {...register('email')}
-                  className={`w-full pl-12 pr-4 py-3 bg-background/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all ${
-                    errors.email ? 'border-red-500' : 'border-border'
-                  }`}
+                  className={`w-full pl-12 pr-4 py-3 bg-background/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all ${errors.email ? 'border-red-500' : 'border-border'
+                    }`}
                   placeholder="admin@example.com"
                 />
               </div>
@@ -105,9 +123,8 @@ export default function Login() {
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   {...register('password')}
-                  className={`w-full pl-12 pr-12 py-3 bg-background/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all ${
-                    errors.password ? 'border-red-500' : 'border-border'
-                  }`}
+                  className={`w-full pl-12 pr-12 py-3 bg-background/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500/50 focus:bg-background transition-all ${errors.password ? 'border-red-500' : 'border-border'
+                    }`}
                   placeholder="Enter your password"
                 />
                 <button
@@ -127,7 +144,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+              className="w-full py-3 px-6 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -143,12 +160,7 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Demo Credentials Info */}
-          <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-            <p className="text-sm text-muted-foreground text-center">
-              <span className="font-semibold text-foreground">Demo:</span> admin@agency.com / admin123
-            </p>
-          </div>
+          
         </div>
       </div>
     </div>

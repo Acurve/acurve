@@ -1,9 +1,9 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: () => void;
   logout: () => void;
 }
 
@@ -22,15 +22,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false);
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
-    // Replace this with your backend API call
-    // For now, using a simple check (you should replace this)
-    if (email === 'admin@agency.com' && password === 'admin123') {
-      setIsAuthenticated(true);
-      localStorage.setItem('adminAuth', 'true');
-      return true;
-    }
-    return false;
+  const login = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('adminAuth', 'true');
+    return true;
   };
 
   const logout = () => {
