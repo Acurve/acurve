@@ -171,7 +171,7 @@ const MobileCategoryItem = ({ category, expandedItems, onToggle }: MobileCategor
                         return (
                             <NavLink
                                 key={subService.id}
-                                to={`/service/${subService.href}`}
+                                to={`/${subService.href}`}
                                 className="h-12 flex items-center gap-2 px-8 text-sm hover:bg-accent/50 transition-colors"
                             >
                                 <SubServiceIcon />
@@ -312,7 +312,7 @@ const DesktopServicesDropdown = ({ categories }: DesktopServicesDropdownProps) =
                             <li key={subService.id} role="none">
                                 <NavigationMenuLink asChild>
                                     <NavLink
-                                        to={`/service/${subService.href}`}
+                                        to={`/${subService.href}`}
                                         className="flex items-center gap-2 py-3 px-4 rounded-full text-foreground/60 hover:text-foreground hover:bg-accent/50 group transition-all duration-300 flex-row"
                                         role="menuitem"
                                     >

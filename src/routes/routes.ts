@@ -17,9 +17,7 @@ import MaintenanceSupportPage from "@/pages/services/maintenance-technical-suppo
 import SEOPage from "@/pages/services/seo";
 import SocialMediaManagementPage from "@/pages/services/social-media-management";
 import VideoEditingPage from "@/pages/services/video-editing";
-import Login from "@/pages/admin/Login";
 import { createBrowserRouter } from "react-router";
-import AdminRoute from "@/pages/admin/AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -37,14 +35,7 @@ export const router = createBrowserRouter([
             {
                 path: "meeting",
                 Component: Meeting
-            }
-        ]
-
-    },
-    {
-        path: "/service/",
-        Component: MainLayout,
-        children: [
+            },
             {
                 path: "custom-web-development",
                 Component: customwebDevelopmentPage,
@@ -101,16 +92,9 @@ export const router = createBrowserRouter([
             {
                 path: "cloud-migration-hosting",
                 Component: CloudMigrationHostingPage,
-            },
+            }
         ]
-    },
-    {
-        path: "/login",
-        Component: Login
-    },
-    {
-        path: "/admin",
-        Component:AdminRoute
+
     },
     {
         path:'*',
