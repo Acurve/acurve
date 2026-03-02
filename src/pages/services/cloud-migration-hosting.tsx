@@ -142,12 +142,20 @@ const CloudMigrationHostingPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve handles cloud migration and hosting solutions for secure, scalable, and efficient operations."
     return (
         <>
             <ForSeo
-                title='Cloud Migration & Hosting - Acurve'
-                description='Acurve handles cloud migration and hosting solutions for secure, scalable, and efficient operations.'
-                path='/service/cloud-migration-hosting'
+                title='Cloud Migration & Hosting Services - Acurve'
+                description={pageDescription}
+                path='/cloud-migration-hosting'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Cloud Migration & Hosting Services"
+                    }
+                }
 
             />
             <MainSection text='Cloud Migration & Hosting'

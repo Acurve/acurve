@@ -143,12 +143,19 @@ const CRMERPIntegrationPage = () => {
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
 
+    const pageDescription = "Acurve integrates CRM and ERP systems to streamline workflows and enhance business efficiency."
     return (
         <>
             <ForSeo
-                title='CRM & ERP Integration - Acurve'
-                description='Acurve integrates CRM and ERP systems to streamline workflows and enhance business efficiency.'
-                path='/service/crm-erp-integration'
+                title='CRM & ERP Integration Services - Acurve'
+                description={pageDescription}
+                path='/crm-erp-integration'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "CRM & ERP Integration Services"
+                    }
+                }
             />
             <MainSection text='CRM & ERP Integration' leftSection={left} rightSection={right} icon={<icons.automationIntegration.crmErpIntegration.icon />} />
 

@@ -145,12 +145,20 @@ const CustomerVendorPortalsPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription="Acurve creates secure and scalable customer and vendor portals to simplify management and interactions."
     return (
         <>
             <ForSeo
-                title='Customer & Vendor Portals - Acurve'
-                description='Acurve creates secure and scalable customer and vendor portals to simplify management and interactions.'
-                path='/service/customer-vendor-portals'
+                title='Customer & Vendor Portals Services - Acurve'
+                description={pageDescription}
+                path='/customer-vendor-portals'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Customer & Vendor Portals Services"
+                    }
+                }
             />
             <MainSection text='Customer & Vendor Portals' leftSection={left} rightSection={right} icon={<icons.digitalSolutions.customerVendorPortals.icon />} />
 

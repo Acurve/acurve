@@ -149,12 +149,19 @@ const SocialMediaManagementPage = () => {
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
 
+    const pageDescription = "Acurve manages your social media presence to grow your audience and drive meaningful engagement."
     return (
         <>
             <ForSeo
-                title='Social Media Management - Acurve'
-                description='Acurve manages your social media presence to grow your audience and drive meaningful engagement.'
-                path='/service/social-media-management'
+                title='Social Media Management Services - Acurve'
+                description={pageDescription}
+                path='/social-media-management'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Social Media Management Services"
+                    }
+                }
 
             />
             <MainSection text='Social Media Management' leftSection={left} rightSection={right} icon={<icons.digitalPresence.socialMediaManagement.icon />} />

@@ -147,12 +147,20 @@ const GraphicDesignPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve provides graphic design services for marketing materials, websites, and social media visuals."
     return (
         <>
             <ForSeo
-                title='Graphic Design - Acurve'
-                description='Acurve provides graphic design services for marketing materials, websites, and social media visuals.'
-                path='/service/graphic-design'
+                title='Graphic Design Services - Acurve'
+                description={pageDescription}
+                path='/graphic-design'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Graphic Design Services"
+                    }
+                }
             />
             <MainSection text='Graphic Design' leftSection={left} rightSection={right} icon={<icons.creativity.graphicDesign.icon />} />
 

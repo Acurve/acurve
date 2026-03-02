@@ -148,12 +148,20 @@ const SEOPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve provides SEO strategies to improve search rankings, drive traffic, and boost online visibility."
     return (
         <>
             <ForSeo
                 title='SEO Services - Acurve'
-                description='Acurve provides SEO strategies to improve search rankings, drive traffic, and boost online visibility.'
-                path='/service/seo'
+                description={pageDescription}
+                path='/seo'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "SEO Services"
+                    }
+                }
 
             />
             <MainSection text='SEO' leftSection={left} rightSection={right} icon={<icons.digitalPresence.seo.icon />} />

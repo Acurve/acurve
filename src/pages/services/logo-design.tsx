@@ -150,12 +150,20 @@ const LogoDesignPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve designs creative logos that reflect your brand’s identity and make a lasting impression."
     return (
         <>
             <ForSeo
-                title='Logo Design - Acurve'
-                description='Acurve designs creative logos that reflect your brand’s identity and make a lasting impression.'
-                path='/service/logo-design'
+                title='Logo Design Services - Acurve'
+                description={pageDescription}
+                path='/logo-design'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Logo Design Services"
+                    }
+                }
             />
             <MainSection text='Logo Design' leftSection={left} rightSection={right} icon={<icons.creativity.logoDesign.icon />} />
 

@@ -130,12 +130,20 @@ const customwebDevelopmentPage = () => {
     )
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve builds custom websites tailored to your business needs, ensuring performance, scalability, and user experience."
     return (
         <>
             <ForSeo
-                title='Custom Web Development - Acurve'
-                description='Acurve builds custom websites tailored to your business needs, ensuring performance, scalability, and user experience.'
-                path='/service/custom-web-development'
+                title='Custom Web Development Services - Acurve'
+                description={pageDescription}
+                path='/custom-web-development'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Custom Web Development Services"
+                    }
+                }
             />
             <MainSection text='Custom Web Development' leftSection={left} rightSection={right}
                 icon={<icons.digitalSolutions.customwebDevelopment.icon />} />

@@ -141,12 +141,20 @@ const BrandingPage = () => {
     )
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve delivers branding solutions to establish a strong business identity and leave a lasting impression."
     return (
         <>
             <ForSeo
-            title='Branding - Acurve'
-            description='Acurve delivers branding solutions to establish a strong business identity and leave a lasting impression.'
-            path='/service/branding'
+                title='Branding Services - Acurve'
+                description={pageDescription}
+                path='/branding'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Branding Services"
+                    }
+                }
             />
             <MainSection text='Branding'
                 leftSection={left} rightSection={right}

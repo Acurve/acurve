@@ -146,12 +146,19 @@ const VideoEditingPage = () => {
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
 
+    const pageDescription = "Acurve delivers professional video editing services to create engaging and high-quality visual content."
     return (
         <>
             <ForSeo
-                title='Video Editing - Acurve'
-                description='Acurve delivers professional video editing services to create engaging and high-quality visual content.'
-                path='/service/video-editing'
+                title='Video Editing Services - Acurve'
+                description={pageDescription}
+                path='/video-editing'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Video Editing Services"
+                    }
+                }
             />
             <MainSection text='Video Editing' leftSection={left} rightSection={right} icon={<icons.creativity.videoEditing.icon />} />
 

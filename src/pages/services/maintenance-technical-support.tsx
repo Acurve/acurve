@@ -149,12 +149,20 @@ const MaintenanceSupportPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve offers maintenance and technical support to ensure your cloud systems run smoothly."
     return (
         <>
             <ForSeo
-                title='Maintenance & Technical Support - Acurve'
-                description='Acurve offers maintenance and technical support to ensure your cloud systems run smoothly.'
-                path='/service/maintenance-technical-support'
+                title='Maintenance & Technical Support Services - Acurve'
+                description={pageDescription}
+                path='/maintenance-technical-support'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Maintenance & Technical Support Services"
+                    }
+                }
             />
             <MainSection text='Maintenace & Technical Support' leftSection={left} rightSection={right} icon={<icons.cloudInfrastructure.maintenanceTechnicalSupport.icon />} />
 

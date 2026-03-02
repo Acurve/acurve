@@ -144,14 +144,22 @@ const DigitalMarketingPage = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+
+    const pageDescription = "Acurve offers digital marketing services to increase visibility, engagement, and conversions online."
     return (
 
 
         <>
             <ForSeo
-                title='Digital Marketing - Acurve'
-                description='Acurve offers digital marketing services to increase visibility, engagement, and conversions online.'
-                path='/service/digital-marketing'
+                title='Digital Marketing Services - Acurve'
+                description={pageDescription}
+                path='/digital-marketing'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "Digital Marketing Services"
+                    }
+                }
             />
             <MainSection text='Digital Marketing' leftSection={left} rightSection={right} icon={<icons.digitalPresence.digitalMarketing.icon />} />
 

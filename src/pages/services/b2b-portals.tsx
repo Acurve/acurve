@@ -143,12 +143,19 @@ const B2BPortals = () => {
 
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
+    const pageDescription = "Acurve develops B2B portals to streamline business operations, improve communication, and enhance productivity."
     return (
         <>
             <ForSeo
-                title='B2B Portals - Acurve'
-                description='Acurve develops B2B portals to streamline business operations, improve communication, and enhance productivity.'
-                path='/service/b2b-portals'
+                title='B2B Portals Services - Acurve'
+                description={pageDescription}
+                path='/b2b-portals'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "B2B Portals Services"
+                    }
+                }
             />
             <MainSection text='B2B Portals' leftSection={left} rightSection={right} icon={<icons.digitalSolutions.b2bportals.icon />} />
 

@@ -139,13 +139,19 @@ const APISystemIntegrationPage = () => {
 
     const techStackListFinal = techStackList.map((stack) => <TechContainer children={stack.icon} glowClassName={stack.className} />)
 
-
+    const pageDescription = "Acurve develops APIs and system connectivity solutions to ensure seamless data exchange and integration."
     return (
         <>
             <ForSeo
-                title='API Development & System Connectivity - Acurve'
-                description='Acurve develops APIs and system connectivity solutions to ensure seamless data exchange and integration.'
-                path='/service/api-dev-system-integration'
+                title='API Development & System Connectivity Services - Acurve'
+                description={pageDescription}
+                path='/api-dev-system-integration'
+                serviceSchema={
+                    {
+                        serviceDescription: `${pageDescription}`,
+                        serviceName: "API Development & System Connectivity Services"
+                    }
+                }
             />
             <MainSection text='Api Developmen & System Integration' leftSection={left} rightSection={right} icon={<icons.automationIntegration.apiDevSystemIntegration.icon />} />
 
