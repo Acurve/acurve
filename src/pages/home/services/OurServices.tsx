@@ -108,7 +108,7 @@ const OurServices: React.FC = () => {
 
 
                                                         <NavLink
-                                                            to={`/service/${subService.href}`}
+                                                            to={`/${subService.href}`}
                                                             key={index}
                                                             className=" flex items-center gap-3 px-4 py-3 rounded-lg font-medium  hover:text-background transition-all duration-300  text-foreground  group/subservice relative hov"
                                                             onMouseEnter={() => setHoveredSubServiceId(subService.id)}
